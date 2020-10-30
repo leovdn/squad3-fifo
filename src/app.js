@@ -37,6 +37,10 @@ app.use(express.json());
 
 const queues = [];
 
+app.get('/', (request, response) => {
+  return response.send('teste')
+})
+
 app.get('/queues', (request, response) => {
   const { title } = request.query;
 
