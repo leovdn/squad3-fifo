@@ -1,47 +1,14 @@
-const express = require("express");
-const cors = require("cors");
+// Configuração do Node
+const express = require('express');
+const cors = require('cors');
+const Queue = require('./models/Queue');
+const app = express();   
 
-const app = express();
-
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 
-
-class Queue {
-  constructor() {
-    this.top = 0;
-    this.bottom = 0;
-    this.storage = {};
-  }
-
-  enqueue(val) {
-    this.storage[this.top] = val;
-    this.top++;
-  }
-
-  dequeue() {
-    if (!this.isEmpty()) {
-      let removedElement = this.storage[this.bottom];
-      delete this.storage[this.bottom];
-      this.bottom++;
-      return removedElement;
-    }
-  }
-
-  peek() {
-    return this.storage[this.bottom];
-  }
-
-  size() {
-    return this.top - this.bottom;
-  }
-
-  isEmpty() {
-    return this.size() === 0;
-  }    
-};
-
+// Código de teste da aplicação
 let queue = new Queue();
 console.log(`Tamanho incial da fila: ${queue.size()}`)
 console.log(`Fila está vazia? ${queue.isEmpty()}`)
@@ -67,6 +34,5 @@ queue.dequeue();
 console.log(`Tamanho após atualizar: ${queue.size()}`);
 console.log(`próximo elemento a ser removido: ${queue.peek()}`);
 
-
-
+// Exportação do módulo para ser iniciado pelo servidor
 module.exports = app;
