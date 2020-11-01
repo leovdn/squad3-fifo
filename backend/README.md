@@ -14,4 +14,7 @@ b) Rodar o comando abaixo para baixar as dependências:
 ```
 yarn install
 ```
-c) Server executando na porta 3333
+c) Executar servidor na porta 3333
+```
+yarn dev
+```
