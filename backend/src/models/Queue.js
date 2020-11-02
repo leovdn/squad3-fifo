@@ -1,3 +1,4 @@
+// Exemplo da lógica de fila
 class Queue {
   constructor() {
     this.top = 0;

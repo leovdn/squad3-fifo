@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #ddd;
+  text-align: center;
+}
+
+.fila {
+  margin: 24px auto;
+  max-width: 600px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;  
+  border-radius: 6px;
+}
+
+.fila-title {
+  margin: 12px;
+}
+
+.fila-body {
+  display: inline;
+  background-color: tomato;
+  padding: 6px;
+  border-radius: 4px;
+  color: #fff;
+}
