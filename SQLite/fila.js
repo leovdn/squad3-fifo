@@ -35,13 +35,14 @@ class Fila {
         )
     }
 
-    deleByGame(game) {
+    deleteByGame(game) {
         return this.dao.run(
-            `DELETE FROM fila 
-            WHERE fila.id = 
-            (SELECT fila.id FROM fila
-            ORDER BY id
-            LIMIT 1);`,
+            `DELETE FROM fila
+            WHERE id = 
+                (SELECT id FROM fila
+                WHERE game = ?
+                ORDER BY id ASC
+                LIMIT 1)`,
             [game]
         )
     }
@@ -50,6 +51,12 @@ class Fila {
         return this.dao.get(
             `SELECT * FROM fila WHERE id = ?`,
             [id]
+        )
+    }
+
+    getByGame(game) {
+        return this.dao.get(
+            `SELECT`
         )
     }
 
