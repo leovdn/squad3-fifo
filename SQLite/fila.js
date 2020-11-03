@@ -35,6 +35,7 @@ class Fila {
         )
     }
 
+    // deleta o primeiro da fila por jogo
     deleteByGame(game) {
         return this.dao.run(
             `DELETE FROM fila
