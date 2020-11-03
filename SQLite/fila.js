@@ -30,8 +30,21 @@ class Fila {
 
     delete(id) {
         return this.dao.run(
-            `DELETE FROM projects WHERE id = ?`,
+            `DELETE FROM fila WHERE id = ?`,
             [id]
+        )
+    }
+
+    // deleta o primeiro da fila por jogo
+    deleteByGame(game) {
+        return this.dao.run(
+            `DELETE FROM fila
+            WHERE id = 
+                (SELECT id FROM fila
+                WHERE game = ?
+                ORDER BY id ASC
+                LIMIT 1)`,
+            [game]
         )
     }
 
@@ -39,6 +52,12 @@ class Fila {
         return this.dao.get(
             `SELECT * FROM fila WHERE id = ?`,
             [id]
+        )
+    }
+
+    getByGame(game) {
+        return this.dao.get(
+            `SELECT`
         )
     }
 
