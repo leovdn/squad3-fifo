@@ -1,27 +1,29 @@
 // Exemplo da lógica de fila
+const arrayFila = require('../app');
+
 class Queue {
   constructor() {
     this.top = 0;
     this.bottom = 0;
-    this.storage = {};
+    arrayFila;
   }
 
   enqueue(val) {
-    this.storage[this.top] = val;
+    arrayFila[this.top] = val;
     this.top++;
   }
 
   dequeue() {
     if (!this.isEmpty()) {
-      let removedElement = this.storage[this.bottom];
-      delete this.storage[this.bottom];
+      let removedElement = arrayFila[this.bottom];
+      delete arrayFila[this.bottom];
       this.bottom++;
       return removedElement;
     }
   }
 
   peek() {
-    return this.storage[this.bottom];
+    return JSON.stringify(arrayFila[this.bottom]);
   }
 
   size() {
