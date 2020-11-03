@@ -1,27 +1,27 @@
 // Exemplo da lógica de fila
-class Queue {
+class QueueClass {
   constructor() {
     this.top = 0;
     this.bottom = 0;
-    this.storage = {};
+    this.queuesStorage = [];
   }
 
-  enqueue(val) {
-    this.storage[this.top] = val;
+  enqueue({title, players, hour}) {
+    this.queuesStorage[this.top] = title, players, hour;
     this.top++;
   }
 
   dequeue() {
     if (!this.isEmpty()) {
-      let removedElement = this.storage[this.bottom];
-      delete this.storage[this.bottom];
+      let removedElement = this.queuesStorage[this.bottom];
+      delete this.queuesStorage[this.bottom];
       this.bottom++;
       return removedElement;
     }
   }
 
   peek() {
-    return this.storage[this.bottom];
+    return this.queuesStorage[this.bottom];
   }
 
   size() {
@@ -33,4 +33,4 @@ class Queue {
   }    
 };
 
-module.exports = Queue;
+module.exports = QueueClass;
