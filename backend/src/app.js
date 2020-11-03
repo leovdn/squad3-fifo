@@ -2,7 +2,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();   
-const Queue = require('./models/Queue');
 
 app.use(cors());
 app.use(express.json());
@@ -30,35 +29,45 @@ app.post('/queues', (request, response) => {
 
   const createQueue = { title, players, hour };
 
-
-
   queues.push(createQueue);
 
   // Código de teste da aplicação
-  let queue = new Queue();
-  console.log(`Tamanho incial da fila: ${queue.size()}`)
-  console.log(`Fila está vazia? ${queue.isEmpty()}`)
-  queue.enqueue(createQueue);
-  queue.enqueue(createQueue);
-  queue.enqueue('c');
-  queue.enqueue('d');
-  queue.enqueue('e');
 
-  console.log(`Tamanho: ${queue.size()}`);
-  console.log(`Fila está vazia? ${queue.isEmpty()}`)
-  console.log(`Próximo elemento a ser removido: ${queue.peek()}`);
+  console.log('===============')
 
-  console.log('\n')
-  console.log('==== Após remoção do primeiro elemento ====');
-  queue.dequeue();
-  console.log(`Tamanho após atualizar: ${queue.size()}`);
-  console.log(`próximo elemento a ser removido: ${queue.peek()}`);
+  queues.forEach(item => {
+    console.log(item);
+  });
 
-  console.log('\n')
-  console.log('==== Após remoção do primeiro elemento ====');
-  queue.dequeue();
-  console.log(`Tamanho após atualizar: ${queue.size()}`);
-  console.log(`próximo elemento a ser removido: ${queue.peek()}`);
+
+
+
+
+  // console.log(`Tamanho incial da fila: ${queue.size()}`)
+  // console.log(`Fila está vazia? ${queue.isEmpty()}`)
+  // queue.enqueue(createQueue);
+  // queue.enqueue(createQueue);
+  // queue.enqueue('c');
+  // queue.enqueue('d');
+  // queue.enqueue('e');
+
+  // console.log(`Tamanho: ${queue.size()}`);
+  // console.log(`Fila está vazia? ${queue.isEmpty()}`)
+  // console.log(`Próximo elemento a ser removido: ${queue.peek()}`);
+
+  // console.log('\n')
+  // console.log('==== Após remoção do primeiro elemento ====');
+  // queue.dequeue();
+  // console.log(`Tamanho após atualizar: ${queue.size()}`);
+  // console.log(`próximo elemento a ser removido: ${queue.peek()}`);
+
+  // console.log('\n')
+  // console.log('==== Após remoção do primeiro elemento ====');
+  // queue.dequeue();
+  // console.log(`Tamanho após atualizar: ${queue.size()}`);
+  // console.log(`próximo elemento a ser removido: ${queue.peek()}`);
+
+
 
   return response.json(createQueue);
 })
