@@ -2,11 +2,11 @@ const AppDAO = require('./dao.js');
 const Fila = require('./fila.js');
 
 function main() {
-    const dao = new AppDAO('./fila.db')
+    const tableName = 'fila.db'
+    const dao = new AppDAO('./' + tableName)
     const fila = new Fila(dao)
 
-
-    fila.createTable()
+    fila.create()
 
     let users = [
         {
@@ -19,6 +19,7 @@ function main() {
         }
     ]
 
+    //inserindo dois jogadores inicialmente para teste
     users.map((user) => {
         const { name, game } = user
         return fila.insert(name, game)

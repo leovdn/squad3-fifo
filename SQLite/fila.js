@@ -3,7 +3,7 @@ class Fila {
         this.dao = dao
     }
 
-    createTable() {
+    create() {
         const sql =
         `CREATE TABLE IF NOT EXISTS fila (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,9 +55,24 @@ class Fila {
         )
     }
 
-    getByGame(game) {
+    // retorna o próximo jogador da fila por jogo
+    getNextByGame(game) {
         return this.dao.get(
-            `SELECT`
+            `SELECT name FROM fila
+            WHERE game = ?
+            ORDER BY id ASC
+            LIMIT 1`,
+            [game]
+        )
+    }
+
+    // retorna o numero de jogadores na fila por jogo
+    getSizeByGame(game) {
+        return this.dao.get(
+            `SELECT COUNT(*) AS playersCount
+            FROM fila
+            WHERE game = ?`,
+            [game]
         )
     }
 
