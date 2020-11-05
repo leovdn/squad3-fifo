@@ -1,68 +1,41 @@
 // Configuração do Node
 const express = require('express');
 const cors = require('cors');
+const AppDAO = require('./database/dao.js');
+const Fila = require('./models/fila.js');
+const { getAllData } = require('./services/main.js');
+// const {insertUser, getAllData, deleteUser} = require('./services/main');
+
+const dbpath = './src/database/fila.db';
+
+const dao = new AppDAO(dbpath);
+const fila = new Fila(dao);
+
 const app = express();   
-const QueueClass = require('./models/Queue');
 
 app.use(cors());
 app.use(express.json());
 
-let fila = new QueueClass();
 
 // Configuração de rotas
-const queues = [];
 
 app.get('/', (request, response) => {
-  return response.json({queues})
+  return response.send('Teste')
 })
 
-app.get('/queues', (request, response) => {
-  const { title } = request.query;
+app.get('/fila', async (request, response) => { 
 
-  const results = title
-    ? queues.filter(queue => queue.title.includes(title))
-    : queues
-  ;    
+  const data = await getAllData().then(data => data);
 
-  // Listagem de cada item da fila
-  console.log('====== Objetos =========')
-
-  {queues.forEach(item => {
-    console.log(item);
-  })}
-
-  // Verificando informações do array que armazena as filas
-  console.log('Tamanho da fila:', queues.length)
-  console.log(`Tamanho: ${fila.size()}`);
-  console.log(`Fila está vazia? ${fila.isEmpty()}`)
-  console.log(`Próximo elemento a ser removido: ${fila.peek()}`);
-  console.log('\n')
-
-  // Removendo um item da fila após ser populado com o método POST
-  console.log('==== Após remoção do primeiro elemento ====');
-  fila.dequeue();
-  console.log(`Tamanho após atualizar: ${fila.size()}`);
-  console.log(`próximo elemento a ser removido: ${fila.peek()}`);
-  console.log('\n')
-
-  // Confirmação da lógica após exclusão do segundo item
-  console.log('==== Após remoção do primeiro elemento ====');
-  fila.dequeue();
-  console.log(`Tamanho após atualizar: ${fila.size()}`);
-  console.log(`próximo elemento a ser removido: ${fila.peek()}`);
-
-  return response.json(results);
+  response.json(data);
 });
 
-app.post('/queues', (request, response) => {
-  const { title, players, hour} = request.body;
+app.post('/fila', (request, response) => {
+  const { name, game} = request.body;
 
-  const createQueue = { title, players, hour };
+  const createQueue = { name, game };
 
-  queues.push(createQueue);
-
-  // Método da classe Queue para enfileirar novo item adicionado ao Array
-  fila.enqueue(createQueue);
+  insertUser({name, game});
 
   return response.json(createQueue);
 })
