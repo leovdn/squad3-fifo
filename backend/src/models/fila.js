@@ -35,6 +35,19 @@ class Fila {
         )
     }
 
+    // deleta o primeiro da fila por jogo
+    deleteByGame(game) {
+        return this.dao.run(
+            `DELETE FROM fila
+            WHERE id = 
+                (SELECT id FROM fila
+                WHERE game = ?
+                ORDER BY id ASC
+                LIMIT 1)`,
+            [game]
+        )
+    }
+
     getById(id) {
         return this.dao.get(
             `SELECT * FROM fila WHERE id = ?`,
@@ -42,6 +55,28 @@ class Fila {
         )
     }
 
+    // retorna o próximo jogador da fila por jogo
+    getNextByGame(game) {
+        return this.dao.get(
+            `SELECT name FROM fila
+            WHERE game = ?
+            ORDER BY id ASC
+            LIMIT 1`,
+            [game]
+        )
+    }
+
+    // retorna o numero de jogadores na fila por jogo
+    getSizeByGame(game) {
+        return this.dao.get(
+            `SELECT COUNT(*) AS playersCount
+            FROM fila
+            WHERE game = ?`,
+            [game]
+        )
+    }
+
+    
     getAll() {
         return this.dao.all(`SELECT * FROM fila`)
     }
