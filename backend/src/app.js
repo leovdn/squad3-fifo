@@ -42,6 +42,14 @@ app.post('/fila', (request, response) => {
   return response.json(createQueue);
 });
 
+app.delete('/fila/:game', async (request, response) => {
+  const params = [request.params.game];
+
+  const data = await deleteFirstElement(params).then(data => data);
+
+  response.json(data);
+})
+
 app.delete('/fila/:id', async (request, response) => {
   const params = [request.params.id];
 
