@@ -76,8 +76,23 @@ class Fila {
         )
     }
 
+    // retorna os nomes de todos os jogadores na fila por jogo
+    getNamesByGame(game) {
+        return this.dao.get(
+            `SELECT name
+            FROM fila
+            WHERE game = ?
+            ORDER BY id`,
+            [game]
+        )
+    }
+
     getAll() {
         return this.dao.all(`SELECT * FROM fila`)
+    }
+
+    resetTable() {
+        return this.dao.run(`DELETE FROM fila`)
     }
 }
 
