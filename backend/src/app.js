@@ -1,15 +1,8 @@
 // Configuração do Node
 const express = require('express');
 const cors = require('cors');
-const AppDAO = require('./database/dao.js');
-const Fila = require('./models/fila.js');
+
 const { getAllData } = require('./services/main.js');
-// const {insertUser, getAllData, deleteUser} = require('./services/main');
-
-const dbpath = './src/database/fila.db';
-
-const dao = new AppDAO(dbpath);
-const fila = new Fila(dao);
 
 const app = express();   
 
