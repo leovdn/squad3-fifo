@@ -32,9 +32,10 @@ const fila = new Fila(dao);
     
 // }
 
-function insertUser(user, game) {
+async function insertUser(name, game) {
+  const response = await fila.insert(name, game);
 
-  return fila.insert(name, game);
+  return response;
 }
 
 
