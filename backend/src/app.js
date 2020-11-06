@@ -1,15 +1,8 @@
 // Configuração do Node
 const express = require('express');
 const cors = require('cors');
-const AppDAO = require('./database/dao.js');
-const Fila = require('./models/fila.js');
-const { getAllData } = require('./services/main.js');
-// const {insertUser, getAllData, deleteUser} = require('./services/main');
 
-const dbpath = './src/database/fila.db';
-
-const dao = new AppDAO(dbpath);
-const fila = new Fila(dao);
+const { getAllData, insertUser, deleteUser, getById, deleteFirstElement } = require('./services/main.js');
 
 const app = express();   
 
@@ -30,14 +23,38 @@ app.get('/fila', async (request, response) => {
   response.json(data);
 });
 
+app.get('/fila/:id', async (request, response) => { 
+  const params = [request.params.id];
+
+  const data = await getById(params).then(data => data);
+
+  response.json(data);
+});
+
+
 app.post('/fila', (request, response) => {
   const { name, game} = request.body;
 
-  const createQueue = { name, game };
 
-  insertUser({name, game});
+  insertUser(name, game);
 
-  return response.json(createQueue);
+  return response.json({message: `Usuário ${name} criado`});
+});
+
+app.delete('/fila/:game', async (request, response) => {
+  const params = [request.params.game];
+
+  const data = await deleteFirstElement(params).then(data => data);
+
+  response.json(data);
+})
+
+app.delete('/delete/:id',  (request, response) => {
+  const params = [request.params.id];
+
+  const data = deleteUser(params).then(data => data);
+
+  response.json(data);
 })
 
 
