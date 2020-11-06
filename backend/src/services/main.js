@@ -34,21 +34,32 @@ const fila = new Fila(dao);
 
 function insertUser(user, game) {
 
-    fila.insert(name, game);
+  return fila.insert(name, game);
 }
 
 
 async function getAllData() {
-
   const response = await fila.getAll();
 
   return response;
 }
 
+async function getById(id) {
+  const response = await fila.getById(id);
+
+  return response
+}
+
 async function deleteUser(id) {
-    const response = await fila.delete(id);
-    
-    return response;
+  const response = await fila.delete(id);
+  
+  return response;
+}
+
+async function deleteFirstElement(game) {
+  const response = await fila.deleteByGame(game);
+
+  return response;
 }
 
 
@@ -56,4 +67,6 @@ module.exports = {
   getAllData: getAllData,
   insertUser: insertUser,
   deleteUser: deleteUser,
+  getById: getById,
+  deleteFirstElement: deleteFirstElement,
 };
