@@ -42,7 +42,13 @@ app.post('/fila', (request, response) => {
   return response.json(createQueue);
 });
 
+app.delete('/fila/:id', async (request, response) => {
+  const params = [request.params.id];
 
+  const data = await deleteUser(params).then(data => data);
+
+  response.json(data);
+})
 
 
 // Exportação do módulo para ser iniciado no arquivo do servidor
