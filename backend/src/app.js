@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const { getAllData } = require('./services/main.js');
+const { getAllData, insertUser, deleteUser, getById, deleteFirstElement } = require('./services/main.js');
 
 const app = express();   
 
@@ -23,6 +23,15 @@ app.get('/fila', async (request, response) => {
   response.json(data);
 });
 
+app.get('/fila/:id', async (request, response) => { 
+  const params = [request.params.id];
+
+  const data = await getById(params).then(data => data);
+
+  response.json(data);
+});
+
+
 app.post('/fila', (request, response) => {
   const { name, game} = request.body;
 
@@ -31,7 +40,9 @@ app.post('/fila', (request, response) => {
   insertUser({name, game});
 
   return response.json(createQueue);
-})
+});
+
+
 
 
 // Exportação do módulo para ser iniciado no arquivo do servidor
