@@ -41,7 +41,7 @@ app.get('/fila', async (request, response) => {
 
 // Retorna o item da fila pelo ID
 app.get('/fila/:id', async (request, response) => { 
-  const params = [request.params.id];
+  const params = request.params.id;
 
   const data = await getById(params);
 
@@ -50,7 +50,7 @@ app.get('/fila/:id', async (request, response) => {
 
 // retorna apenas primeiro nome da lista na promise
 app.get('/fila/game/:game', async (request, response) => { 
-  const params = [request.params.game];
+  const params = request.params.game;
 
   const data = await getNames(params);
 
@@ -58,7 +58,7 @@ app.get('/fila/game/:game', async (request, response) => {
 });
 
 app.get('/fila/next/:game', async (request, response) => { 
-  const params = [request.params.game];
+  const params = request.params.game;
 
   const data = await getNext(params);
 
@@ -90,7 +90,7 @@ app.delete('/delete/:id',  (request, response) => {
   response.json(data);
 })
 
-app.delete('/fila', async (request, response) => {
+app.delete('/reset', async (request, response) => {
 
   const reset = await resetTable();
 
