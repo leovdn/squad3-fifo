@@ -48,7 +48,7 @@ app.get('/fila/:id', async (request, response) => {
   response.json(data);
 });
 
-// retorna apenas primeiro nome da lista na promise
+// retorna todos os itens
 app.get('/fila/game/:game', async (request, response) => { 
   const params = request.params.game;
 
