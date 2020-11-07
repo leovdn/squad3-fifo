@@ -6,38 +6,11 @@ const dbpath = './src/database/fila.db';
 const dao = new AppDAO(dbpath);
 const fila = new Fila(dao);
 
-// function main() {
-//     const dao = new AppDAO(dbpath)
-//     const fila = new Fila(dao)
-
-
-//     fila.createTable()
-
-//     let users = [
-//         {
-//             name: 'Diego',
-//             game: 'FIFA'
-//         },
-//         {
-//             name: 'Carlos',
-//             game: 'FIFA'
-//         }
-//     ]
-
-//     users.map((user) => {
-//         const { name, game } = user
-//         return fila.insert(name, game)
-//     })
-
-    
-// }
-
 async function insertUser(name, game) {
   const response = await fila.insert(name, game);
 
   return response;
 }
-
 
 async function getAllData() {
   const response = await fila.getAll();
@@ -48,7 +21,26 @@ async function getAllData() {
 async function getById(id) {
   const response = await fila.getById(id);
 
-  return response
+  return response;
+}
+
+// nao implementado em app.js
+async function getNames(game) {
+  const response = await fila.getNamesByGame(game);
+
+  return response;
+}
+
+async function getNext(game) {
+  const response = await fila.getNextByGame(game);
+
+  return response;
+}
+
+async function getSize(game) {
+  const response = await fila.getSizeByGame(game);
+
+  return response;
 }
 
 async function deleteUser(id) {
@@ -63,11 +55,21 @@ async function deleteFirstElement(game) {
   return response;
 }
 
+// nao implementado em app.js
+async function resetTable() {
+  const response = await fila.resetTable();
+
+  return response;
+}
 
 module.exports = {
   getAllData: getAllData,
   insertUser: insertUser,
   deleteUser: deleteUser,
-  getById: getById,
   deleteFirstElement: deleteFirstElement,
+  getById: getById,
+  getNames: getNames,
+  getNext: getNext,
+  getSize: getSize,
+  resetTable: resetTable
 };
