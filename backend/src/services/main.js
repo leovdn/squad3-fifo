@@ -24,11 +24,15 @@ async function getById(id) {
   return response;
 }
 
-// nao implementado em app.js
 async function getNames(game) {
-  const response = await fila.getNamesByGame(game);
+  const response = await fila.getAll();
 
-  return response;
+  const responseFiltered = response.filter(obj => {
+    if (obj.game === game) {
+      return obj
+    }
+  });
+  return responseFiltered;
 }
 
 async function getNext(game) {
@@ -55,7 +59,6 @@ async function deleteFirstElement(game) {
   return response;
 }
 
-// nao implementado em app.js
 async function resetTable() {
   const response = await fila.resetTable();
 
