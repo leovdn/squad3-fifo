@@ -1,6 +1,7 @@
 // Configuração do Node
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
         getNext, getSize, getNames, resetTable } = require('./services/main.js');
@@ -9,6 +10,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}))
 
 // Configuração de rotas
 
@@ -25,15 +28,18 @@ app.post('/fila', (request, response) => {
   return response.json({message: `Usuário ${name} criado`});
 });
 
-// Métodos get
 
-app.get('/fila', async (request, response) => { 
 
+
+// === Métodos get ===
+// Retorna todos os itens da fila
+app.get('/fila', async (request, response) => {
   const data = await getAllData().then(data => data);
 
   response.json(data);
 });
 
+// Retorna o item da fila pelo ID
 app.get('/fila/:id', async (request, response) => { 
   const params = [request.params.id];
 
@@ -43,26 +49,26 @@ app.get('/fila/:id', async (request, response) => {
 });
 
 // retorna apenas primeiro nome da lista na promise
-app.post('/fila/names', async (request, response) => { 
-  const { game } = request.body;
+app.get('/fila/game/:game', async (request, response) => { 
+  const params = [request.params.game];
 
-  const data = await getNames(game).then(data => data);
+  const data = await getNames(params);
 
-  return response.json(data);
+  return response.json(data)
 });
 
-app.post('/fila/next', async (request, response) => { 
-  const { game } = request.body;
+app.get('/fila/next/:game', async (request, response) => { 
+  const params = [request.params.game];
 
-  const data = await getNext(game);
+  const data = await getNext(params);
 
   return response.json({message: `Usuário ${data.name} é o próximo da fila`});
 });
 
-app.post('/fila/size', async (request, response) => { 
-  const { game } = request.body;
+app.get('/fila/size/:game', async (request, response) => { 
+  const params = [request.params.game];
 
-  const data = await getSize(game);
+  const data = await getSize(params);
 
   return response.json({message: `Existem ${data.playersCount} usuários na fila`});
 });
@@ -83,6 +89,13 @@ app.delete('/delete/:id',  (request, response) => {
 
   response.json(data);
 })
+
+app.delete('/fila', async (request, response) => {
+
+  const reset = await resetTable();
+
+  return response.send(reset);
+});
 
 // Exportação do módulo para ser iniciado no arquivo do servidor
 module.exports = app;
