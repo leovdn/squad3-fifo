@@ -1,20 +1,21 @@
 const container = document.querySelector('.container');
 
+const url = 'http://localhost:3333/fila';
 
 const getPosts = async () => {
-  const response = await fetch('http://localhost:3333/queues');  
+  const response = await fetch(url);  
   return response.json();  
 };
 
 const addPostsIntoDOM = async () => {
   const posts = await getPosts();
 
-  const postsTemplate = posts.map(({ title, players, hour }) => `
-    <div class="fila">
-      <div class="fila-info">
-        <h2 class="fila-title">${title}</h2>
-        <p class="fila-body">Jogadores: ${players}</p>
-        <p class="fila-body">Horário: ${hour}</p>
+  const postsTemplate = posts.map(({ name, game, id }) => `
+    <div class="item">
+      <div class="item-info">
+        <h2 class="item-id">${id}</h2>
+        <h2 class="item-title">${name}</h2>
+        <p class="item-game">${game}</p>
       </div>    
     </div>  
   `).join("");
