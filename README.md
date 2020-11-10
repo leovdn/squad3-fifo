@@ -1,17 +1,4 @@
-# squad3-fifo
+# Squad 03 - FIFO - FCamara
+Sistema para facilitar a organização e gerenciamento das filas para o espaço de jogos.
 
-# Instruções
-## Requisitos
-
-```
-Instalar Node.js (versão LTS)
-```
-
-a) Após clonar repositório, abrir pasta do respositório no terminal de preferência. 
-
-b) Rodar o comando abaixo para baixar as dependências:
-
-```
-yarn install
-```
-c) Server executando na porta 3333
+Aplicação desenvolvida em Javascript com Node.js e banco de dados em SQLite. Protótipo de testes separado em duas pastas principais: Backend(API) e Frontend(Client);
