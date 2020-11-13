@@ -6,7 +6,7 @@ const santosRouter = express.Router();
 
 
 santosRouter.get('/', (request, response) => {
-  return response.send('Teste')
+  return response.send('Unidade de Santos')
 })
 
 // Método insert

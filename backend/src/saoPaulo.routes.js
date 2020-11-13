@@ -6,7 +6,7 @@ const saoPauloRouter = express.Router();
 
 
 saoPauloRouter.get('/', (request, response) => {
-  return response.send('Teste')
+  return response.send('Unidade de São Paulo')
 })
 
 // Método insert
