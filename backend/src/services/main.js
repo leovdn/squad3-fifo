@@ -6,8 +6,8 @@ const dbpath = './src/database/fila.db';
 const dao = new AppDAO(dbpath);
 const fila = new Fila(dao);
 
-async function insertUser(name, game) {
-  const response = await fila.insert(name, game);
+async function insertUser(name, game, branch) {
+  const response = await fila.insert(name, game, branch);
 
   return response;
 }
@@ -18,21 +18,28 @@ async function getAllData() {
   return response;
 }
 
+async function getAllDataByBranch(branch) {
+  const response = await fila.getallByBranch(branch);
+
+  return response;
+}
+
 async function getById(id) {
   const response = await fila.getById(id);
 
   return response;
 }
 
-async function getNames(game) {
-  const response = await fila.getAll();
+async function getNames(game, branch) {
+  const response = await fila.getNamesByGame(game, branch);
 
-  const responseFiltered = response.filter(obj => {
-    if (obj.game === game) {
+  /*const responseFiltered = response.filter(obj => {
+    if (bj.goame === game) {
       return obj
     }
-  });
-  return responseFiltered;
+  });*/
+
+  return response;
 }
 
 async function getNext(game) {
@@ -53,8 +60,8 @@ async function deleteUser(id) {
   return response;
 }
 
-async function deleteFirstElement(game) {
-  const response = await fila.deleteByGame(game);
+async function deleteFirstElement(game, branch) {
+  const response = await fila.deleteByGame(game, branch);
 
   return response;
 }
@@ -66,10 +73,11 @@ async function resetTable() {
 }
 
 module.exports = {
-  getAllData: getAllData,
   insertUser: insertUser,
   deleteUser: deleteUser,
   deleteFirstElement: deleteFirstElement,
+  getAllData: getAllData,
+  getAllDataByBranch: getAllDataByBranch,
   getById: getById,
   getNames: getNames,
   getNext: getNext,

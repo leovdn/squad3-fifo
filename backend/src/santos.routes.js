@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
-  getNext, getSize, getNames, resetTable } = require('./services/main.js');
+  getNext, getSize, getNames, resetTable, getAllDataByBranch } = require('./services/main.js');
 
 const santosRouter = express.Router();
 
@@ -11,9 +11,9 @@ santosRouter.get('/', (request, response) => {
 
 // Método insert
 santosRouter.post('/fila', (request, response) => {
-  const { name, game } = request.body;
+  const { name, game, branch } = request.body;
 
-  insertUser(name, game);
+  insertUser(name, game, branch);
 
   return response.json({message: `Usuário ${name} criado`});
 });
@@ -38,11 +38,11 @@ santosRouter.get('/fila/:id', async (request, response) => {
   response.json(data);
 });
 
-// retorna todos os itens
-santosRouter.get('/fila/game/:game', async (request, response) => { 
-  const params = request.params.game;
+// retorna todos os itens por jogo
+santosRouter.get('/fila/names/:game', async (request, response) => { 
+  const params = [ request.params.game,  'santos'];
 
-  const data = await getNames(params);
+  const data = await getNames(params[0], params[1]);
 
   return response.json(data)
 });

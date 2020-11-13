@@ -19,7 +19,7 @@ class Fila {
 
     insert(name, game, branch) {
         return this.dao.run(
-            `INSERT INTO fila (name, game)
+            `INSERT INTO fila (name, game, branch)
                 VALUES (?, ?, ?)`,
                 [name, game, branch]
         )
@@ -67,7 +67,7 @@ class Fila {
 
     // retorna os nomes de todos os jogadores na fila por jogo
     getNamesByGame(game, branch) {
-        return this.dao.get(
+        return this.dao.all(
             `SELECT name
             FROM fila
             WHERE game = ?
