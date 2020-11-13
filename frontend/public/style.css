@@ -74,3 +74,25 @@ body {
 .item-game span {
   padding: 6px;
 }
+
+.game-cards {
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+}
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 60px auto;
+  width: 200px;
+  height: 200px;
+  background: #fff;  
+}
+
+.game a {
+  font-size: 48px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
