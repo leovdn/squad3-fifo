@@ -3,7 +3,7 @@ const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
   getNext, getSize, getNames, resetTable, getAllDataByBranch } = require('./services/main.js');
 
 const santosRouter = express.Router();
-
+const thisBranch = 'santos';
 
 santosRouter.get('/', (request, response) => {
   return response.send('Unidade de Santos')
@@ -21,16 +21,14 @@ santosRouter.post('/fila', (request, response) => {
 
 // === Métodos get ===
 // Retorna todos os itens da fila
+// santosRouter.get('/fila', async (request, response) => {
+//   const data = await getAllData().then(data => data);
+
+//   response.json(data);
+// });
+
 santosRouter.get('/fila', async (request, response) => {
-  const data = await getAllData().then(data => data);
-
-  response.json(data);
-});
-
-santosRouter.get('/fila/:branch', async (request, response) => {
-  const params = request.params.branch;
-
-  const data = await getAllDataByBranch(params);
+  const data = await getAllDataByBranch(thisBranch);
 
   response.json(data);
 })
@@ -46,36 +44,37 @@ santosRouter.get('/fila/:id', async (request, response) => {
 
 // retorna todos os itens por jogo
 santosRouter.get('/fila/names/:game', async (request, response) => { 
-  const params = [ request.params.game,  'santos' ]; //provisorio esse santos digitado
+  const params = request.params;
 
-  const data = await getNames(params[0], params[1]);
+  const data = await getNames(params.game, branch);
 
   return response.json(data)
+  // console.log(params)
 });
 
 santosRouter.get('/fila/next/:game', async (request, response) => { 
-  const params = [ request.params.game, 'santos' ]; //provisorio esse santos digitado
+  const params = request.params
 
-  const data = await getNext(params[0], params[1]);
+  const data = await getNext(params.game, thisBranch);
 
   return response.json({message: `Usuário ${data.name} é o próximo da fila`});
 });
 
 santosRouter.get('/fila/size/:game', async (request, response) => { 
-  const params = [ request.params.game, 'santos' ]; //provisorio esse santos digitado
+  const params = request.params;
 
-  const data = await getSize(params[0], params[1]);
+  const data = await getSize(params.game, thisBranch);
 
   return response.json({message: `Existem ${data.playersCount} usuários na fila`});
 });
 
 // Métodos delete
 santosRouter.delete('/fila/:game', async (request, response) => {
-  const params = [ request.params.game, 'santos' ]; //provisorio esse santos digitado
+  const params = request.params;
 
-  const data = await deleteFirstElement(params[0], params[1]);
+  const data = await deleteFirstElement(params.game, thisBranch);
 
-  response.json({message: `Usuário deletado da fila ${params[0]} de ${params[1]}`});
+  response.json({message: `Usuário deletado da fila ${params.game} de ${thisBranch}`});
 })
 
 santosRouter.delete('/delete/:id',  (request, response) => {
