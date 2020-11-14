@@ -19,8 +19,6 @@ santosRouter.post('/fila', (request, response) => {
 });
 
 
-
-
 // === Métodos get ===
 // Retorna todos os itens da fila
 santosRouter.get('/fila', async (request, response) => {
@@ -28,6 +26,14 @@ santosRouter.get('/fila', async (request, response) => {
 
   response.json(data);
 });
+
+santosRouter.get('/fila/:branch', async (request, response) => {
+  const params = request.params.branch;
+
+  const data = await getAllDataByBranch(params);
+
+  response.json(data);
+})
 
 // Retorna o item da fila pelo ID
 santosRouter.get('/fila/:id', async (request, response) => { 
@@ -40,7 +46,7 @@ santosRouter.get('/fila/:id', async (request, response) => {
 
 // retorna todos os itens por jogo
 santosRouter.get('/fila/names/:game', async (request, response) => { 
-  const params = [ request.params.game,  'santos']; //provisorio esse santos digitado
+  const params = [ request.params.game,  'santos' ]; //provisorio esse santos digitado
 
   const data = await getNames(params[0], params[1]);
 
@@ -48,7 +54,7 @@ santosRouter.get('/fila/names/:game', async (request, response) => {
 });
 
 santosRouter.get('/fila/next/:game', async (request, response) => { 
-  const params = [ request.params.game, 'santos']; //provisorio esse santos digitado
+  const params = [ request.params.game, 'santos' ]; //provisorio esse santos digitado
 
   const data = await getNext(params[0], params[1]);
 
@@ -56,7 +62,7 @@ santosRouter.get('/fila/next/:game', async (request, response) => {
 });
 
 santosRouter.get('/fila/size/:game', async (request, response) => { 
-  const params = [request.params.game, 'santos']; //provisorio esse santos digitado
+  const params = [ request.params.game, 'santos' ]; //provisorio esse santos digitado
 
   const data = await getSize(params[0], params[1]);
 
@@ -65,7 +71,7 @@ santosRouter.get('/fila/size/:game', async (request, response) => {
 
 // Métodos delete
 santosRouter.delete('/fila/:game', async (request, response) => {
-  const params = [request.params.game, 'santos']; //provisorio esse santos digitado
+  const params = [ request.params.game, 'santos' ]; //provisorio esse santos digitado
 
   const data = await deleteFirstElement(params[0], params[1]);
 
@@ -73,7 +79,7 @@ santosRouter.delete('/fila/:game', async (request, response) => {
 })
 
 santosRouter.delete('/delete/:id',  (request, response) => {
-  const params = [request.params.id];
+  const params = request.params.id;
 
   const data = deleteUser(params).then(data => data);
 
