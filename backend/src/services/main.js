@@ -33,23 +33,17 @@ async function getById(id) {
 async function getNames(game, branch) {
   const response = await fila.getNamesByGame(game, branch);
 
-  /*const responseFiltered = response.filter(obj => {
-    if (bj.goame === game) {
-      return obj
-    }
-  });*/
+  return response;
+}
+
+async function getNext(game, branch) {
+  const response = await fila.getNextByGame(game, branch);
 
   return response;
 }
 
-async function getNext(game) {
-  const response = await fila.getNextByGame(game);
-
-  return response;
-}
-
-async function getSize(game) {
-  const response = await fila.getSizeByGame(game);
+async function getSize(game, branch) {
+  const response = await fila.getSizeByGame(game, branch);
 
   return response;
 }
