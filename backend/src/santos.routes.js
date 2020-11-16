@@ -46,7 +46,7 @@ santosRouter.get('/fila/:id', async (request, response) => {
 santosRouter.get('/fila/names/:game', async (request, response) => { 
   const params = request.params;
 
-  const data = await getNames(params.game, branch);
+  const data = await getNames(params.game, thisBranch);
 
   return response.json(data)
   // console.log(params)
