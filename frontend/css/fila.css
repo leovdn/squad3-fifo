@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "Courier New", Courier, monospace;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #1d1d1d;
+}
+
+a {
+  text-decoration: none;
+  color: #ef653c;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+  background: rgb(71, 70, 70);
+}
+
+.header a {
+  font-size: 2em;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.menu li {
+  margin-left: 20px;
+}
+
+.menu li a {
+  padding: 10px;
+  font-size: 1.225em;
+  font-weight: bold;
+}
+
+.filas {
+  text-align: center;
+  padding: 20px;
+}
+
+.filas h3 {
+  margin: 20px 0 30px 0;
+  font-size: 2em;
+  color: #ef653c;
+}
+
+.filas table {
+  margin: 0 auto;
+  color: #fff;
+  border-collapse: collapse;
+  overflow: scroll;
+  text-align: center;
+}
+
+.filas table tr:nth-child(even) {
+  background: rgb(63, 60, 60);
+}
+
+.filas table th {
+  background: #ef653c;
+  font-size: 1.2em;
+  color: #1d1d1d;
+}
+
+.filas th,
+td {
+  padding: 25px 20px;
+}
+
+.filas button {
+  margin-top: 25px;
+  background: none;
+  outline: none;
+  padding: 15px;
+  color: #ef653c;
+  font-weight: bold;
+  font-size: 1em;
+  font-family: "Courier New", Courier, monospace;
+}
