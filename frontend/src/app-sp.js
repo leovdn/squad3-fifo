@@ -1,6 +1,6 @@
-const container = document.querySelector('.container-santos');
+const container = document.querySelector('.container-sp');
 
-const url = 'http://localhost:3333/santos/fila';
+const url = 'http://localhost:3333/sp/fila';
 
 const getPosts = async () => {
   const response = await fetch(url);  

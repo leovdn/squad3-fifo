@@ -6,8 +6,8 @@ const dbpath = './src/database/fila.db';
 const dao = new AppDAO(dbpath);
 const fila = new Fila(dao);
 
-async function insertUser(name, game) {
-  const response = await fila.insert(name, game);
+async function insertUser(name, game, branch) {
+  const response = await fila.insert(name, game, branch);
 
   return response;
 }
@@ -18,31 +18,32 @@ async function getAllData() {
   return response;
 }
 
+async function getAllDataByBranch(branch) {
+  const response = await fila.getallByBranch(branch);
+
+  return response;
+}
+
 async function getById(id) {
   const response = await fila.getById(id);
 
   return response;
 }
 
-async function getNames(game) {
-  const response = await fila.getAll();
-
-  const responseFiltered = response.filter(obj => {
-    if (obj.game === game) {
-      return obj
-    }
-  });
-  return responseFiltered;
-}
-
-async function getNext(game) {
-  const response = await fila.getNextByGame(game);
+async function getNames(game, branch) {
+  const response = await fila.getNamesByGame(game, branch);
 
   return response;
 }
 
-async function getSize(game) {
-  const response = await fila.getSizeByGame(game);
+async function getNext(game, branch) {
+  const response = await fila.getNextByGame(game, branch);
+
+  return response;
+}
+
+async function getSize(game, branch) {
+  const response = await fila.getSizeByGame(game, branch);
 
   return response;
 }
@@ -53,8 +54,8 @@ async function deleteUser(id) {
   return response;
 }
 
-async function deleteFirstElement(game) {
-  const response = await fila.deleteByGame(game);
+async function deleteFirstElement(game, branch) {
+  const response = await fila.deleteByGame(game, branch);
 
   return response;
 }
@@ -66,10 +67,11 @@ async function resetTable() {
 }
 
 module.exports = {
-  getAllData: getAllData,
   insertUser: insertUser,
   deleteUser: deleteUser,
   deleteFirstElement: deleteFirstElement,
+  getAllData: getAllData,
+  getAllDataByBranch: getAllDataByBranch,
   getById: getById,
   getNames: getNames,
   getNext: getNext,
