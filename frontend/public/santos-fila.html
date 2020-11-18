@@ -12,7 +12,13 @@
     <p class="disclaimer">Aviso: Esta página trata-se de uma versão para testes da API.
       <br> Nenhum estilo aqui mostrado representa o trabalho final de nosso UX ;)
     </p>
-    <ul class="fila-container"></ul>
+    <!-- <ul class="fila-container"></ul> -->
+    <form id="form-fila" action="http://localhost:3333/santos/fila" method="post">
+      <input type="text" placeholder="nome" name="name">
+      <input type="text" placeholder="jogo" name="game">
+      <input type="text" placeholder="unidade" name="branch">
+      <button type="submit">Entrar na fila</button>
+    </form>
   </div>
 
   <div class="container-santos">
