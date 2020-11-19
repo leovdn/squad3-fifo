@@ -9,6 +9,7 @@ class Fila {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name Text,
             game Text,
+            category Text,
             branch Text)`
         return this.dao.run(sql)
     }
@@ -20,8 +21,8 @@ class Fila {
     insert(name, game, branch) {
         return this.dao.run(
             `INSERT INTO fila (name, game, branch)
-                VALUES (?, ?, ?)`,
-                [name, game, branch]
+                VALUES (?, ?, ?, ?)`,
+                [name, game, category, branch]
         )
     }
 
@@ -38,8 +39,7 @@ class Fila {
     delete(id) {
         return this.dao.run(
             `DELETE FROM fila
-            WHERE id = ?
-            AND branch = ?`,
+            WHERE id = ?`,
             [id]
         )
     }
