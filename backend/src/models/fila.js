@@ -38,8 +38,7 @@ class Fila {
     delete(id) {
         return this.dao.run(
             `DELETE FROM fila
-            WHERE id = ?
-            AND branch = ?`,
+            WHERE id = ?`,
             [id]
         )
     }
