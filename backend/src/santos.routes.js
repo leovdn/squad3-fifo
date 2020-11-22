@@ -11,12 +11,16 @@ santosRouter.get('/', (request, response) => {
 })
 
 // Método insert
-santosRouter.post('/fila', (request, response) => {
+santosRouter.post('/fila', async (request, response) => {
   const { name, game, branch } = request.body;
 
-  insertUser(name, game, branch);
+  try {    
+    await insertUser(name, game, branch);
+    return response.json({message: `Usuário ${name} criado`});    
 
-  return response.json({message: `Usuário ${name} criado`});
+  } catch (error) {
+    return response.status(400).send(`Sem resposta do servidor. Tente novamente. ${error}`);
+  }
 });
 
 

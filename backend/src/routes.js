@@ -5,9 +5,6 @@ const saoPauloRoutes = require('./saoPaulo.routes');
 
 const routes = express.Router();   
 
-// routes.use(cors());
-// routes.use(express.json());
-
 routes.use('/santos', santosRoutes);
 routes.use('/sp', saoPauloRouter);
 
