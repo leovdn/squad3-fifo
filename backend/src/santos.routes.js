@@ -19,7 +19,7 @@ santosRouter.post('/fila', async (request, response) => {
     return response.json({message: `Usuário ${name} criado`});    
 
   } catch (error) {
-    return response.status(400).send(`Sem resposta do servidor. Tente novamente. ${error}`);
+    return response.status(400).send(`Erro ao entrar na fila. Tente novamente. ${error}`);
   }
 });
 
@@ -35,7 +35,14 @@ santosRouter.post('/fila', async (request, response) => {
 santosRouter.get('/fila', async (request, response) => {
   const data = await getAllDataByBranch(thisBranch);
 
-  response.json(data);
+  try {    
+    await data;
+    return response.json(data);   
+
+  } catch (error) {
+    return response.status(503).send(`Sem resposta do servidor. Tente novamente. ${error}`);
+  }
+
 })
 
 // Retorna o item da fila pelo ID
