@@ -47,11 +47,14 @@ santosRouter.get('/fila', async (request, response) => {
 
 // Retorna o item da fila pelo ID
 santosRouter.get('/fila/:id', async (request, response) => { 
-  const params = request.params.id;
+  const params = request.params;
+  const data = await getById(params.id);
 
-  const data = await getById(params);
-
-  response.json(data);
+  if (data) {
+    return response.json(data);
+  } else {
+    return response.status(404).send("ID não encontrado")
+  }  
 });
 
 // retorna todos os itens por jogo
@@ -59,9 +62,12 @@ santosRouter.get('/fila/names/:game', async (request, response) => {
   const params = request.params;
 
   const data = await getNames(params.game, thisBranch);
+  if (data.length > 0) {
+    return response.json(data)
 
-  return response.json(data)
-  // console.log(params)
+  } else {
+    return response.status(404).send(`Não há filas para o jogo "${params.game}".`)
+  }
 });
 
 santosRouter.get('/fila/next/:game', async (request, response) => { 
