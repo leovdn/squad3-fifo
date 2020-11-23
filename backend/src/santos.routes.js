@@ -11,12 +11,16 @@ santosRouter.get('/', (request, response) => {
 })
 
 // Método insert
-santosRouter.post('/fila', (request, response) => {
+santosRouter.post('/fila', async (request, response) => {
   const { name, game, branch } = request.body;
 
-  insertUser(name, game, branch);
+  try {    
+    await insertUser(name, game, branch);
+    return response.json({message: `Usuário ${name} criado`});    
 
-  return response.json({message: `Usuário ${name} criado`});
+  } catch (error) {
+    return response.status(400).send(`Erro ao entrar na fila. Tente novamente. ${error}`);
+  }
 });
 
 
@@ -31,16 +35,26 @@ santosRouter.post('/fila', (request, response) => {
 santosRouter.get('/fila', async (request, response) => {
   const data = await getAllDataByBranch(thisBranch);
 
-  response.json(data);
+  try {    
+    await data;
+    return response.json(data);   
+
+  } catch (error) {
+    return response.status(503).send(`Sem resposta do servidor. Tente novamente. ${error}`);
+  }
+
 })
 
 // Retorna o item da fila pelo ID
 santosRouter.get('/fila/:id', async (request, response) => { 
-  const params = request.params.id;
+  const params = request.params;
+  const data = await getById(params.id);
 
-  const data = await getById(params);
-
-  response.json(data);
+  if (data) {
+    return response.json(data);
+  } else {
+    return response.status(404).send("ID não encontrado")
+  }  
 });
 
 // retorna todos os itens por jogo
@@ -48,14 +62,16 @@ santosRouter.get('/fila/names/:game', async (request, response) => {
   const params = request.params;
 
   const data = await getNames(params.game, thisBranch);
+  if (data.length > 0) {
+    return response.json(data)
 
-  return response.json(data)
-  // console.log(params)
+  } else {
+    return response.status(404).send(`Não há filas para o jogo "${params.game}".`)
+  }
 });
 
 santosRouter.get('/fila/next/:game', async (request, response) => { 
-  const params = request.params
-
+  const params = request.params;
   const data = await getNext(params.game, thisBranch);
 
   return response.json({message: `Usuário ${data.name} é o próximo da fila`});
@@ -63,7 +79,6 @@ santosRouter.get('/fila/next/:game', async (request, response) => {
 
 santosRouter.get('/fila/size/:game', async (request, response) => { 
   const params = request.params;
-
   const data = await getSize(params.game, thisBranch);
 
   return response.json({message: `Existem ${data.playersCount} usuários na fila`});
@@ -72,22 +87,31 @@ santosRouter.get('/fila/size/:game', async (request, response) => {
 // Métodos delete
 santosRouter.delete('/fila/:game', async (request, response) => {
   const params = request.params;
+  const data = await getNext(params.game, thisBranch);
 
-  const data = await deleteFirstElement(params.game, thisBranch);
-
-  response.json({message: `Usuário deletado da fila ${params.game} de ${thisBranch}`});
+  try {
+    await deleteFirstElement(params.game, thisBranch);
+    response.json({message: `Usuário ${data.name} da fila ${params.game} de ${thisBranch}`});
+    
+  } catch (error) {
+    return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
+  }
 })
 
-santosRouter.delete('/delete/:id',  (request, response) => {
-  const params = request.params.id;
+santosRouter.delete('/delete/:id', async (request, response) => {
+  const params = request.params;
+  const userData = await getById(params.id);
 
-  const data = deleteUser(params).then(data => data);
-
-  response.json(data);
+  try {
+    await deleteUser(params.id).then(data => data);
+    response.json({message: `Usuário ${userData.name} removido da fila ${params.game} da unidade ${thisBranch}`});
+    
+  } catch (error) {
+    return response.status(404).send(`Usuário não encontrado.`)
+  }
 })
 
 santosRouter.delete('/reset', async (request, response) => {
-
   const reset = await resetTable();
 
   return response.send(reset);
