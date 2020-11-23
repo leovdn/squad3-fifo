@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Neue55;
+}
+
+a {
+  color: #ffb9a4;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 10%;
+  padding: 10px;
+  background: #1d1d1e;
+  box-shadow: 0 3px #00000029;
+}
+
+.header img {
+  width: 47px;
+  height: 47px;
+}
+
+#nome {
+  display: block;
+  font-family: CaveatBold;
+  margin: 20px auto 0 auto;
+}
+
+.container {
+  background: #1d1d1e;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 0 auto;
+}
+.container-formulario {
+  text-align: right;
+  padding-bottom: 25px;
+}
+
+.container-formulario h3 {
+  margin: 40px auto 40px auto;
+  color: #ffb9a4;
+  font-weight: normal;
+  text-align: center;
+}
+
+.container-formulario a {
+  margin-right: 5px;
+}
+
+.formulario {
+  margin: auto;
+}
+
+.formulario input {
+  display: block;
+  width: 300px;
+  margin: 0 auto 20px auto;
+  padding: 15px 20px;
+  border: 1px solid #ffb9a4;
+  border-radius: 15px;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: #ffb9a4;
+}
+
+.formulario input::placeholder {
+  color: #ffb9a4;
+}
+
+.container-button {
+  margin: 0 auto;
+  padding: 60px 20px 30px 20px;
+  box-sizing: border-box;
+  width: 350px;
+  text-align: center;
+}
+
+.container-button p {
+  margin-top: 50px;
+  color: #ffb9a4;
+}
+
+.button {
+  padding: 15px 50px;
+  border: 1px solid #ffb9a4;
+  border-radius: 10px;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffb9a4;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background: #ffb9a4;
+  color: #1d1d1e;
+}
+
+/* Responsividade */
+
+@media only screen and (max-width: 787px) {
+  .header img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #nome {
+    width: 100px;
+  }
+
+  .container-formulario a {
+    font-size: 12px;
+  }
+
+  .container-formulario h3 {
+    font-size: 16px;
+  }
+
+  .formulario input {
+    width: 200px;
+  }
+
+  .container-button {
+    padding: 30px;
+  }
+
+  .container-button p {
+    font-size: 14px;
+  }
+
+  .button {
+    margin: 0 auto;
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+}

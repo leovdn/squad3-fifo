@@ -1,0 +1,226 @@
+a {
+  text-decoration: none;
+  color: #ffb9a4;
+}
+
+/* Header */
+
+.header {
+  position: fixed;
+  width: 100%;
+  margin-top: -110px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  background: #1d1d1e;
+  box-shadow: 0 3px #00000029;
+}
+
+.header img {
+  width: 47px;
+  height: 47px;
+}
+
+.container-menu {
+  width: 960px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.container-menu li {
+  margin-left: 20px;
+}
+
+.container-menu li a {
+  padding: 10px;
+  font-size: 1.225em;
+  font-weight: bold;
+}
+
+.menu {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: Neue55;
+  font-size: 16px;
+}
+
+#menu-responsivo {
+  display: none;
+}
+
+.button {
+  padding: 10px 20px;
+  border: 1px solid #707070;
+  border-radius: 10px;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: #ffb9a4;
+}
+
+.button:hover {
+  background: #ffb9a4;
+  color: #1d1d1e;
+}
+/* Final do Header */
+
+/* Início dos Jogos */
+/* Início container pesquisa */
+.container-pesquisa {
+  width: 960px;
+  margin: 110px auto 0 auto;
+  padding: 10px 0;
+}
+
+.container-pesquisa ul {
+  padding: 0;
+  display: block;
+}
+
+.container-pesquisa ul li {
+  display: inline-block;
+  list-style: none;
+  font-family: Neue55;
+  margin-right: 15px;
+}
+
+.container-pesquisa .nome-unidade {
+  margin: 10px 0 30px 0%;
+  font-family: Neue55;
+  font-weight: normal;
+  text-align: center;
+}
+
+.box-pesquisa {
+  display: block;
+  width: 800px;
+  margin: 0 auto 30px auto;
+  padding: 15px 0 15px 20px;
+  border: none;
+  border-radius: 15px;
+  background: #ffffff;
+  outline: none;
+}
+
+.box-pesquisa::placeholder {
+  font-family: Neue55;
+}
+/* Final container pesquisa */
+
+/* Before */
+.before {
+  width: 960px;
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: Neue55;
+}
+
+.before p {
+  flex: 1;
+}
+
+.underline {
+  border-bottom: 1px solid #707070;
+}
+
+.before .mais {
+  text-align: right;
+}
+/* Final before */
+
+/* Início container jogos */
+.container-jogos {
+  width: 960px;
+  margin: 0 auto 30px;
+  text-align: center;
+  color: #ffb9a4;
+  overflow-x: scroll;
+}
+
+.mais-jogados {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.todos {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#todos {
+  margin-bottom: 100px;
+}
+/* Final container jogos */
+
+/* Responsividade */
+@media only screen and (max-width: 787px) {
+  .container-menu img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .menu {
+    display: none;
+  }
+  #menu-responsivo {
+    display: block;
+    width: 25px;
+  }
+
+  .container-pesquisa .nome-unidade {
+    font-size: 18px;
+  }
+  .container-menu,
+  .container-pesquisa,
+  .container-jogos {
+    width: 300px;
+  }
+
+  .container-pesquisa ul {
+    display: none;
+  }
+
+  .box-pesquisa,
+  .before {
+    width: 300px;
+  }
+
+  .before p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 788px) and (max-width: 979px) {
+  .menu {
+    width: 80%;
+  }
+
+  .container-menu,
+  .container-pesquisa,
+  .container-jogos {
+    width: 788px;
+  }
+
+  .container-pesquisa ul {
+    padding-left: 20px;
+  }
+
+  .box-pesquisa,
+  .before {
+    width: 700px;
+  }
+}
