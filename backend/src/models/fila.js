@@ -44,6 +44,20 @@ class Fila {
         )
     }
 
+    // deleta o primeiro da fila por categoria
+    deleteByCategory(category, branch) {
+        return this.dao.run(
+            `DELETE FROM fila
+            WHERE id = 
+                (SELECT id FROM fila
+                WHERE category = ?
+                AND branch = ?
+                ORDER BY id ASC
+                LIMIT 1)`,
+            [category, branch]
+        )
+    }
+
     // deleta o primeiro da fila por jogo
     deleteByGame(game, branch) {
         return this.dao.run(
