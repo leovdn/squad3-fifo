@@ -71,8 +71,7 @@ santosRouter.get('/fila/names/:game', async (request, response) => {
 });
 
 santosRouter.get('/fila/next/:game', async (request, response) => { 
-  const params = request.params
-
+  const params = request.params;
   const data = await getNext(params.game, thisBranch);
 
   return response.json({message: `Usuário ${data.name} é o próximo da fila`});
@@ -80,7 +79,6 @@ santosRouter.get('/fila/next/:game', async (request, response) => {
 
 santosRouter.get('/fila/size/:game', async (request, response) => { 
   const params = request.params;
-
   const data = await getSize(params.game, thisBranch);
 
   return response.json({message: `Existem ${data.playersCount} usuários na fila`});
@@ -98,19 +96,22 @@ santosRouter.delete('/fila/:game', async (request, response) => {
   } catch (error) {
     return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
   }
-
 })
 
-santosRouter.delete('/delete/:id',  (request, response) => {
-  const params = request.params.id;
+santosRouter.delete('/delete/:id', async (request, response) => {
+  const params = request.params;
+  const userData = await getById(params.id);
 
-  const data = deleteUser(params).then(data => data);
-
-  response.json(data);
+  try {
+    await deleteUser(params.id).then(data => data);
+    response.json({message: `Usuário ${userData.name} removido da fila ${params.game} da unidade ${thisBranch}`});
+    
+  } catch (error) {
+    return response.status(404).send(`Usuário não encontrado.`)
+  }
 })
 
 santosRouter.delete('/reset', async (request, response) => {
-
   const reset = await resetTable();
 
   return response.send(reset);
