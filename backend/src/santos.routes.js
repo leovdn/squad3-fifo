@@ -89,10 +89,16 @@ santosRouter.get('/fila/size/:game', async (request, response) => {
 // Métodos delete
 santosRouter.delete('/fila/:game', async (request, response) => {
   const params = request.params;
+  const data = await getNext(params.game, thisBranch);
 
-  const data = await deleteFirstElement(params.game, thisBranch);
+  try {
+    await deleteFirstElement(params.game, thisBranch);
+    response.json({message: `Usuário ${data.name} da fila ${params.game} de ${thisBranch}`});
+    
+  } catch (error) {
+    return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
+  }
 
-  response.json({message: `Usuário deletado da fila ${params.game} de ${thisBranch}`});
 })
 
 santosRouter.delete('/delete/:id',  (request, response) => {
