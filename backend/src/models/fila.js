@@ -9,6 +9,7 @@ class Fila {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name Text,
             game Text,
+            categoty TEXT,
             branch Text)`
         return this.dao.run(sql)
     }
@@ -19,14 +20,14 @@ class Fila {
 
     insert(name, game, branch) {
         return this.dao.run(
-            `INSERT INTO fila (name, game, branch)
-                VALUES (?, ?, ?)`,
-                [name, game, branch]
+            `INSERT INTO fila (name, game, category, branch)
+                VALUES (?, ?, ?, ?)`,
+                [name, game, category, branch]
         )
     }
 
     update(fila) {
-        const { id, name, game, branch } = fila
+        const { id, name, branch } = fila
         return this.dao.run(
             `UPDATE fila SET name = ?
             WHERE id = ?
@@ -64,6 +65,8 @@ class Fila {
         )
     }
 
+    // GET BY GAME *********************************
+
     // retorna os nomes de todos os jogadores na fila por jogo
     getNamesByGame(game, branch) {
         return this.dao.all(
@@ -96,6 +99,43 @@ class Fila {
             WHERE game = ?
             AND branch = ?`,
             [game, branch]
+        )
+    }
+
+    // GET BY CATEGORY **********************
+
+    // retorna os nomes de todos os jogadores na fila por categoria
+    getNamesByCategory(category, branch) {
+        return this.dao.all(
+            `SELECT name
+            FROM fila
+            WHERE category = ?
+            AND branch = ?
+            ORDER BY id ASC`,
+            [category, branch]
+        )
+    }
+    
+    // retorna o próximo jogador da fila por categoria
+    getNextByCategory(category, branch) {
+        return this.dao.get(
+            `SELECT name FROM fila
+            WHERE category = ?
+            AND branch = ?
+            ORDER BY id ASC
+            LIMIT 1`,
+            [category, branch]
+        )
+    }
+    
+    // retorna o numero de jogadores na fila por categoria
+    getSizeByCategory(category, branch) {
+        return this.dao.get(
+            `SELECT COUNT(*) AS playersCount
+            FROM fila
+            WHERE category = ?
+            AND branch = ?`,
+            [category, branch]
         )
     }
 
