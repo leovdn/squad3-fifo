@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
-  getNext, getSize, getNames, resetTable, getAllDataByBranch } = require('./services/main.js');
+  getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory } = require('./services/main.js');
 
 const santosRouter = express.Router();
 const thisBranch = 'santos';
@@ -55,7 +55,7 @@ santosRouter.get('/fila', async (request, response) => {
 })
 
 // Retorna o item da fila pelo ID
-santosRouter.get('/fila/:id', async (request, response) => { 
+santosRouter.get('/fila/id/:id', async (request, response, next) => { 
   const params = request.params;
   const data = await getById(params.id);
 
@@ -64,6 +64,19 @@ santosRouter.get('/fila/:id', async (request, response) => {
   } else {
     return response.status(404).send("ID não encontrado")
   }  
+  next();
+});
+
+santosRouter.get('/fila/category/:category', async (request, response) => { 
+  const params = request.params;
+
+  const data = await getNamesByCategory(params.category, thisBranch);
+  if (data.length > 0) {
+    return response.json(data)
+
+  } else {
+    return response.status(404).send(`Não há filas para a categoria "${params.game}".`)
+  }
 });
 
 // retorna todos os itens por jogo
