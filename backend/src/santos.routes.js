@@ -12,10 +12,19 @@ santosRouter.get('/', (request, response) => {
 
 // Método insert
 santosRouter.post('/fila', async (request, response) => {
-  const { name, game, branch } = request.body;
+  let { name, game, category, branch } = request.body;
+  
+  if (game === 'fifa' || game === 'tlou' || game === 'sfv') {
+    category = 'playstation';
+  } else if (game === 'rpg' || game === 'war') {
+    category = 'board';
+  } else {
+    category = null;
+  }
 
-  try {    
-    await insertUser(name, game, branch);
+  try {       
+    await insertUser(name, game, category, branch);
+    // return response.redirect('http://127.0.0.1:5500/filas.html');  
     return response.json({message: `Usuário ${name} criado`});    
 
   } catch (error) {
