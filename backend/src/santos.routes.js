@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
-  getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory } = require('./services/main.js');
+  getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory, getNextByCategory } = require('./services/main.js');
 
 const santosRouter = express.Router();
 const thisBranch = 'santos';
@@ -55,7 +55,7 @@ santosRouter.get('/fila', async (request, response) => {
 })
 
 // Retorna o item da fila pelo ID
-santosRouter.get('/fila/id/:id', async (request, response, next) => { 
+santosRouter.get('/fila/id/:id', async (request, response) => { 
   const params = request.params;
   const data = await getById(params.id);
 
@@ -64,9 +64,9 @@ santosRouter.get('/fila/id/:id', async (request, response, next) => {
   } else {
     return response.status(404).send("ID não encontrado")
   }  
-  next();
 });
 
+// Retorna items da fila por categoria
 santosRouter.get('/fila/category/:category', async (request, response) => { 
   const params = request.params;
 
@@ -97,6 +97,13 @@ santosRouter.get('/fila/next/:game', async (request, response) => {
   const data = await getNext(params.game, thisBranch);
 
   return response.json({message: `Usuário ${data.name} é o próximo da fila`});
+});
+
+santosRouter.get('/fila/next/category/:category', async (request, response) => { 
+  const params = request.params;
+  const data = await getNextByCategory(params.category, thisBranch);
+
+  return response.json({message: `${data.name} é o próximo a jogar`});
 });
 
 santosRouter.get('/fila/size/:game', async (request, response) => { 
