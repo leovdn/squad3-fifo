@@ -18,7 +18,7 @@ class Fila {
         return this.dao.run(`DELETE FROM fila`)
     }
 
-    insert(name, game, branch) {
+    insert(name, game, category, branch) {
         return this.dao.run(
             `INSERT INTO fila (name, game, category, branch)
                 VALUES (?, ?, ?, ?)`,
