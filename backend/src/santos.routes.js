@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
-  getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory, getNextByCategory } = require('./services/main.js');
+  getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory, getNextByCategory, getSizeByCategory } = require('./services/main.js');
 
 const santosRouter = express.Router();
 const thisBranch = 'santos';
@@ -92,6 +92,7 @@ santosRouter.get('/fila/names/:game', async (request, response) => {
   }
 });
 
+// Retorna o próximo da fila por jogo
 santosRouter.get('/fila/next/:game', async (request, response) => { 
   const params = request.params;
   const data = await getNext(params.game, thisBranch);
@@ -99,6 +100,7 @@ santosRouter.get('/fila/next/:game', async (request, response) => {
   return response.json({message: `Usuário ${data.name} é o próximo da fila`});
 });
 
+// Retorna o próximo da fila por categoria
 santosRouter.get('/fila/next/category/:category', async (request, response) => { 
   const params = request.params;
   const data = await getNextByCategory(params.category, thisBranch);
@@ -112,6 +114,16 @@ santosRouter.get('/fila/size/:game', async (request, response) => {
 
   return response.json({message: `Existem ${data.playersCount} usuários na fila`});
 });
+
+santosRouter.get('/fila/size/category/:category', async (request, response) => { 
+  const params = request.params;
+  const data = await getSizeByCategory(params.category, thisBranch);
+
+  return response.json({message: `Existem ${data.playersCount} usuários na fila`});
+});
+
+
+
 
 // Métodos delete
 santosRouter.delete('/fila/:game', async (request, response) => {
