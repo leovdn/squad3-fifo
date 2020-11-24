@@ -105,7 +105,7 @@ module.exports = {
   getNames: getNames,
   getNext: getNext,
   getSize: getSize,
-  getNamesByCategory: getSizeByCategory,
+  getNamesByCategory: getNamesByCategory,
   getNextByCategory: getNextByCategory,
   getSizeByCategory: getSizeByCategory,
   resetTable: resetTable
