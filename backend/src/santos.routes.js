@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
-  getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory, getNextByCategory, getSizeByCategory } = require('./services/main.js');
+  getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory, getNextByCategory, getSizeByCategory, deleteByCategory } = require('./services/main.js');
 
 const santosRouter = express.Router();
 const thisBranch = 'santos';
@@ -126,13 +126,27 @@ santosRouter.get('/fila/size/category/:category', async (request, response) => {
 
 
 // Métodos delete
+
 santosRouter.delete('/fila/:game', async (request, response) => {
   const params = request.params;
   const data = await getNext(params.game, thisBranch);
 
   try {
     await deleteFirstElement(params.game, thisBranch);
-    response.json({message: `Usuário ${data.name} da fila ${params.game} de ${thisBranch}`});
+    response.json({message: `Usuário ${data.name} removido da fila ${params.game} de ${thisBranch}`});
+    
+  } catch (error) {
+    return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
+  }
+})
+
+santosRouter.delete('/fila/category/:category', async (request, response) => {
+  const params = request.params;
+  const data = await getNextByCategory(params.category, thisBranch);
+
+  try {
+    await deleteByCategory(params.category, thisBranch);
+    response.json({message: `Usuário ${data.name} removido da fila ${params.category} de ${thisBranch}`});
     
   } catch (error) {
     return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
@@ -151,6 +165,8 @@ santosRouter.delete('/delete/:id', async (request, response) => {
     return response.status(404).send(`Usuário não encontrado.`)
   }
 })
+
+
 
 santosRouter.delete('/reset', async (request, response) => {
   const reset = await resetTable();
