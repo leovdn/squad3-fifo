@@ -9,6 +9,7 @@ class Fila {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name Text,
             game Text,
+            categoty TEXT,
             branch Text)`
         return this.dao.run(sql)
     }
@@ -17,16 +18,16 @@ class Fila {
         return this.dao.run(`DELETE FROM fila`)
     }
 
-    insert(name, game, branch) {
+    insert(name, game, category, branch) {
         return this.dao.run(
-            `INSERT INTO fila (name, game, branch)
-                VALUES (?, ?, ?)`,
-                [name, game, branch]
+            `INSERT INTO fila (name, game, category, branch)
+                VALUES (?, ?, ?, ?)`,
+                [name, game, category, branch]
         )
     }
 
     update(fila) {
-        const { id, name, game, branch } = fila
+        const { id, name, branch } = fila
         return this.dao.run(
             `UPDATE fila SET name = ?
             WHERE id = ?
@@ -38,9 +39,22 @@ class Fila {
     delete(id) {
         return this.dao.run(
             `DELETE FROM fila
-            WHERE id = ?
-            AND branch = ?`,
+            WHERE id = ?`,
             [id]
+        )
+    }
+
+    // deleta o primeiro da fila por categoria
+    deleteByCategory(category, branch) {
+        return this.dao.run(
+            `DELETE FROM fila
+            WHERE id = 
+                (SELECT id FROM fila
+                WHERE category = ?
+                AND branch = ?
+                ORDER BY id ASC
+                LIMIT 1)`,
+            [category, branch]
         )
     }
 
@@ -64,6 +78,8 @@ class Fila {
             [id]
         )
     }
+
+    // GET BY GAME *********************************
 
     // retorna os nomes de todos os jogadores na fila por jogo
     getNamesByGame(game, branch) {
@@ -97,6 +113,43 @@ class Fila {
             WHERE game = ?
             AND branch = ?`,
             [game, branch]
+        )
+    }
+
+    // GET BY CATEGORY **********************
+
+    // retorna os nomes de todos os jogadores na fila por categoria
+    getNamesByCategory(category, branch) {
+        return this.dao.all(
+            `SELECT name
+            FROM fila
+            WHERE category = ?
+            AND branch = ?
+            ORDER BY id ASC`,
+            [category, branch]
+        )
+    }
+    
+    // retorna o próximo jogador da fila por categoria
+    getNextByCategory(category, branch) {
+        return this.dao.get(
+            `SELECT name FROM fila
+            WHERE category = ?
+            AND branch = ?
+            ORDER BY id ASC
+            LIMIT 1`,
+            [category, branch]
+        )
+    }
+    
+    // retorna o numero de jogadores na fila por categoria
+    getSizeByCategory(category, branch) {
+        return this.dao.get(
+            `SELECT COUNT(*) AS playersCount
+            FROM fila
+            WHERE category = ?
+            AND branch = ?`,
+            [category, branch]
         )
     }
 
