@@ -3,255 +3,91 @@
   padding: 0;
 }
 
+html,
+body {
+  font-family: "Courier New", Courier, monospace;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #1d1d1d;
+}
+
 a {
   text-decoration: none;
-  color: #ffb9a4;
+  color: #ef653c;
 }
 
 .header {
-  position: fixed;
-  width: 100%;
-  margin-top: -100px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  padding: 10px;
-  background: #1d1d1e;
-  box-shadow: 0 3px #00000029;
+  padding: 20px;
+  background: rgb(71, 70, 70);
 }
 
-.header img {
-  width: 47px;
-  height: 47px;
+.header a {
+  font-size: 2em;
 }
 
-.container-menu {
-  width: 960px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.menu {
   list-style: none;
+  display: flex;
 }
 
-.container-menu li {
+.menu li {
   margin-left: 20px;
 }
 
-.container-menu li a {
+.menu li a {
   padding: 10px;
   font-size: 1.225em;
   font-weight: bold;
 }
 
-.menu {
-  width: 75%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-family: Neue55;
-  font-size: 16px;
-}
-
-.button {
-  padding: 10px 20px;
-  border: 1px solid #707070;
-  border-radius: 10px;
-  outline: none;
-  text-decoration: none;
-  cursor: pointer;
-  color: #ffb9a4;
-}
-
-.button:hover {
-  background: #ffb9a4;
-  color: #1d1d1e;
-}
-
-#menu-responsivo {
-  display: none;
-}
-/* Final Header */
-
-/* Início tabelas */
 .filas {
-  width: 960px;
-
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto 30px auto;
   text-align: center;
+  padding: 20px;
 }
 
-.tipo-jogo {
-  box-sizing: border-box;
-  width: 960px;
-  margin: 100px auto 0 auto;
-  padding-bottom: 30px;
-  font-family: Neue55;
-  color: #ffb9a4;
-  font-size: 24px;
-}
-
-.tipo-jogo ul {
-  padding: 0;
-  display: block;
-}
-
-.tipo-jogo ul li {
-  display: inline-block;
-  list-style: none;
-  font-family: Neue55;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.tipo-jogo p {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.fila-item {
-  padding-bottom: 30px;
-}
-
-.fila-item h3 {
-  text-transform: uppercase;
-  font-family: Neue75;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-  width: 5px;
-  background: rgb(53, 50, 50);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 8px #2e2b2b;
-}
-
-.table-scroll {
-  height: 220px;
-  overflow-y: scroll;
-  margin-bottom: 30px;
+.filas h3 {
+  margin: 20px 0 30px 0;
+  font-size: 2em;
+  color: #ef653c;
 }
 
 .filas table {
-  width: 300px;
-  border-collapse: collapse;
-  text-align: left;
+  margin: 0 auto;
   color: #fff;
-  font-size: 14px;
-  font-family: Neue55;
+  border-collapse: collapse;
+  overflow: scroll;
+  text-align: center;
 }
 
 .filas table tr:nth-child(even) {
-  background: #090a15;
+  background: rgb(63, 60, 60);
 }
 
-.filas table tr:nth-child(odd) {
-  background: #0b0d1b;
+.filas table th {
+  background: #ef653c;
+  font-size: 1.2em;
+  color: #1d1d1d;
 }
 
-.filas td {
-  padding: 10px 10px;
+.filas th,
+td {
+  padding: 25px 20px;
 }
 
-.foto {
-  border: 3px solid #f0673e;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-}
-
-.jogo {
-  border-left: 2px solid #1d1d1d;
-}
-
-.btn-fila {
-  margin-top: 50px;
-  border: 1px solid #707070;
+.filas button {
+  margin-top: 25px;
+  background: none;
   outline: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-family: Neue55;
-  color: #ffb9a4;
+  padding: 15px;
+  color: #ef653c;
+  font-weight: bold;
   font-size: 1em;
-  cursor: pointer;
-}
-
-.btn-fila:hover {
-  background: #ffb9a4;
-  color: #1d1d1e;
-}
-
-/* Responsividade */
-@media only screen and (max-width: 787px) {
-  .container-menu img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .menu {
-    display: none;
-  }
-
-  #menu-responsivo {
-    display: block;
-    width: 25px;
-  }
-
-  .container-menu {
-    width: 300px;
-  }
-
-  .tipo-jogo ul {
-    margin-left: 10px;
-    display: none;
-  }
-
-  .filas {
-    width: 300px;
-    flex-wrap: wrap;
-  }
-
-  .tipo-jogo {
-    width: 300px;
-    margin-bottom: 0;
-  }
-
-  .fila-item {
-    width: 290px;
-    margin-top: 20px;
-  }
-}
-
-@media only screen and (min-width: 788px) and (max-width: 979px) {
-  .container-menu {
-    width: 788px;
-  }
-  .menu {
-    width: 80%;
-  }
-
-  .filas {
-    width: 788px;
-  }
-
-  .tipo-jogo {
-    width: 788px;
-  }
-  .tipo-jogo ul {
-    margin-left: 10px;
-  }
-
-  .fila-item {
-    width: 250px;
-  }
+  font-family: "Courier New", Courier, monospace;
 }

@@ -1,73 +1,90 @@
-@font-face {
-  font-family: CaveatRegular;
-  src: url("../fonts/Caveat-Regular.ttf");
-}
-
-@font-face {
-  font-family: CaveatMedium;
-  src: url("../fonts/Caveat-Medium.ttf");
-}
-
-@font-face {
-  font-family: CaveatSemiBold;
-  src: url("../fonts/Caveat-SemiBold.ttf");
-}
-
-@font-face {
-  font-family: CaveatBold;
-  src: url("../fonts/Caveat-Bold.ttf");
-}
-
-@font-face {
-  font-family: Neue55;
-  src: url("../fonts/nhaasgrotesktxpro-55rg.ttf");
-}
-
-@font-face {
-  font-family: Neue65;
-  src: url("../fonts/nhaasgrotesktxpro-65md.ttf");
-}
-
-@font-face {
-  font-family: Neue75;
-  src: url("../fonts/nhaasgrotesktxpro-75bd.ttf");
+* {
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
+  font-family: "Courier New", Courier, monospace;
+  height: 100%;
   width: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  background-image: linear-gradient(180deg, #1d1d1d, #1e2033);
+  display: flex;
 }
 
-body {
-  background-image: linear-gradient(#1d1d1d, #1e2033);
-  background-repeat: no-repeat;
-  color: #ffb9a4;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  height: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  height: 10px;
-  background: rgb(53, 50, 50);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 8px #2e2b2b;
-}
-/* Final Scrollbar */
-
-.footer {
+#video-bg {
   position: fixed;
+  top: -100px;
   width: 100%;
-  bottom: 0;
-  height: 25px;
-  background: #000000b5;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.login {
+  margin: auto;
+  width: 400px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 40px;
+  border-radius: 6px;
+}
+.container {
+  width: 360px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.container h1 {
+  margin-bottom: 0.7em;
+}
+
+.container p {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.container h1,
+p,
+.form label {
+  color: #ef653c;
+}
+
+.form {
+  width: 100%;
+}
+
+.form label {
+  display: block;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: left;
+}
+
+.form input {
+  box-sizing: border-box;
+  outline: none;
+  width: 100%;
+  padding: 5px 10px;
+  font-size: 1em;
+  border-radius: 3px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.btn button {
+  color: #ef653c;
+  margin-top: 25px;
+  font-size: 1.3em;
+  padding: 5px;
+  width: 150px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  outline: none;
+  background: none;
+}
+
+.btn p {
+  margin: 1em 0 1em 0;
+}
+
+.btn a {
+  color: #fff;
 }
