@@ -1,47 +1,119 @@
-html,
-body {
-  height: 100%;
+.header {
+  position: fixed;
+  margin-top: -100px;
   width: 100%;
+  height: 10%;
+  background: #1d1d1e;
+  margin-bottom: 1em;
   display: flex;
-  margin: 0;
-  padding: 0;
-  font-family: "Courier New", Courier, monospace;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px #00000029;
 }
 
-body {
-  background: #1d1d1d;
+.header img {
+  width: 47px;
+  height: 47px;
 }
 
 .container {
-  width: 960px;
-  height: 100%;
-  margin: auto;
+  margin: 100px auto 100px auto;
   text-align: center;
 }
 
-.logo {
-  display: inline-block;
-  margin-top: 100px;
-  margin-bottom: 30px;
-  font-size: 3em;
-  padding: 10px 40px;
-  color: #ef653c;
+#welcome {
+  font-family: Neue75;
+  font-size: 18px;
 }
 
-.unidades-container {
-  text-align: center;
-  margin: 0 auto 5em auto;
+#nome {
+  font-family: CaveatBold;
 }
 
-.unidades {
-  display: inline-block;
-  margin-left: 1em;
+#select {
+  font-family: Neue55;
+  font-size: 24px;
 }
 
-.unidades h3 {
-  color: #ef653c;
+.container-unidades {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .unidades img {
-  border-radius: 8px;
+  max-width: 180px;
+}
+
+/* Responsividade */
+
+@media only screen and (max-width: 787px) {
+  .header img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .container {
+    width: 300px;
+  }
+
+  .container-unidades {
+    width: 260px;
+    margin: 0 auto;
+  }
+
+  #welcome {
+    font-size: 14px;
+  }
+
+  #nome {
+    width: 100px;
+  }
+
+  #select {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 788px) and (max-width: 979px) {
+  .container {
+    width: 500px;
+  }
+  .container-unidades {
+    margin: auto;
+    width: 500px;
+  }
+
+  .unidades img {
+    max-width: 220px;
+  }
+
+  #welcome {
+    font-size: 16px;
+  }
+
+  #nome {
+    width: 150px;
+  }
+
+  #select {
+    font-family: Neue55;
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  .container {
+    width: 600px;
+  }
+  .container-unidades {
+    margin: auto;
+    width: 600px;
+  }
+
+  .unidades img {
+    max-width: 280px;
+  }
 }
