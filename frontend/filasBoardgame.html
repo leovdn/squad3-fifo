@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/fila.css">
-  <title>Fila Board games</title>
+  <link rel="stylesheet" href="css/modal.css">
+  <title>Fila PlayStation</title>
 </head>
 
 <body>
@@ -33,9 +34,9 @@
       <li>></li>
       <li><a href="jogos.html">Inicío</a></li>
       <li>></li>
-      <li>Board games</li>
+      <li>PlayStation</li>
     </ul>
-    <p>Board games</p>
+    <p>PlayStation</p>
   </div>
 
   <section class="filas">
@@ -49,45 +50,40 @@
             <th></th>
             <th>Jogo</th>
           </thead>
-          <tbody>
-            <td>1</td>
-            <td id="container-foto"><img class="foto" src="img/logo.png" alt="foto do jogador"></td>
-            <td>Juliana Vieira da Costa</td>
-            <td>Beat Saber</td>
-            </tr>
+          <tbody class="table-board">       
 
-            <tr>
-              <td>2</td>
-              <td><img class="foto" src="img/logo.png" alt="foto do jogador"></td>
-              <td>Ricardo Dias</td>
-              <td>FIFA</td>
-            </tr>
-
-            <tr>
-              <td>3</td>
-              <td><img class="foto" src="img/logo.png" alt="foto do jogador"></td>
-              <td>Murilo Couto</td>
-              <td>FIFA</td>
-            </tr>
-
-            <tr>
-              <td>4</td>
-              <td><img class="foto" src="img/logo.png" alt="foto do jogador"></td>
-              <td>Valeria Castro</td>
-              <td>Street Fighter</td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
 
-      <a class="btn-fila" href="login.html">Entrar na fila</a>
+      <div class="modal-bg">
+        <div class="modal">
+          <span class="fechar">X</span>
+          <h3>Quase lá!</h3>
+          <form action="http://localhost:3333/santos/fila" method="post">
+            <input type="name" name="name" placeholder="Nome">
+            <select name="game">
+              <option value="war">WAR</option>
+              <option value="rpg">RPG</option>
+            </select>
+            <select name="branch">
+              <option value="santos">Santos</option>
+            </select>            
+            <button type="submit">Entrar</button>
+          </form>
+        </div>
+      </div>
+
+      <a class="join-board btn-fila">Entrar</a>
+    
     </div>
 
 
   </section>
 
   <footer class="footer"></footer>
-
+  <script src="filasBoardgame.js"></script>
 </body>
 
 </html>
