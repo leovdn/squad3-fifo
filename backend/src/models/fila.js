@@ -7,9 +7,9 @@ class Fila {
         const sql =
         `CREATE TABLE IF NOT EXISTS fila (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name Text,
+            name Text NOT NULL,
             game Text,
-            categoty TEXT,
+            category TEXT,
             branch Text)`
         return this.dao.run(sql)
     }
