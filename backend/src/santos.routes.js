@@ -7,12 +7,13 @@ const santosRouter = express.Router();
 const thisBranch = 'santos';
 
 santosRouter.get('/', (request, response) => {
-  return response.send('Unidade de Santos')
+  return response.redirect('https://squad3-fifo.vercel.app/jogos.html')
 })
 
 // Método insert
 santosRouter.post('/fila', async (request, response) => {
   let { name, game, category, branch } = request.body;
+  let url = request.headers.referer;
   
   if (game === 'fifa' || game === 'tlou' || game === 'sfv') {
     category = 'playstation';
@@ -24,8 +25,8 @@ santosRouter.post('/fila', async (request, response) => {
 
   try {       
     await insertUser(name, game, category, branch);
-    // return response.redirect('http://127.0.0.1:5500/filas.html');  
-    return response.json({message: `Usuário ${name} criado`});    
+    return response.redirect(url);  
+    // return response.({message: `Usuário ${name} criado`});    
 
   } catch (error) {
     return response.status(400).send(`Erro ao entrar na fila. Tente novamente. ${error}`);
@@ -44,14 +45,17 @@ santosRouter.post('/fila', async (request, response) => {
 santosRouter.get('/fila', async (request, response) => {
   const data = await getAllDataByBranch(thisBranch);
 
-  try {    
-    await data;
-    return response.json(data);   
-
-  } catch (error) {
-    return response.status(503).send(`Sem resposta do servidor. Tente novamente. ${error}`);
+  if (data.length > 0) {
+    try {    
+      await data;
+      return response.json(data);   
+  
+    } catch (error) {
+      return response.status(503).send(`Sem resposta do servidor. Tente novamente. ${error}`);
+    }
+  } else {
+    return response.status(404).json({ message: "Error"})
   }
-
 })
 
 // Retorna o item da fila pelo ID
@@ -143,10 +147,13 @@ santosRouter.delete('/fila/:game', async (request, response) => {
 santosRouter.delete('/fila/category/:category', async (request, response) => {
   const params = request.params;
   const data = await getNextByCategory(params.category, thisBranch);
+  // let url = 'http://127.0.0.1:5500/filas.html' || 'https://squad3-fifo.vercel.app/filas.html';
+  let url = request.headers.referer;
 
   try {
     await deleteByCategory(params.category, thisBranch);
-    response.json({message: `Usuário ${data.name} removido da fila ${params.category} de ${thisBranch}`});
+    // response.json({message: `Usuário ${data.name} removido da fila ${params.category} de ${thisBranch}`});
+    return response.redirect(url)
     
   } catch (error) {
     return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
