@@ -96,7 +96,7 @@ class Fila {
     // retorna o próximo jogador da fila por jogo
     getNextByGame(game, branch) {
         return this.dao.get(
-            `SELECT name FROM fila
+            `SELECT * FROM fila
             WHERE game = ?
             AND branch = ?
             ORDER BY id ASC
