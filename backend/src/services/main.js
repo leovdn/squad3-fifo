@@ -53,13 +53,9 @@ async function getSize(game, branch) {
 // Get by category
 
 async function getNamesByCategory(category, branch) {
-  const response = await fila.getAll();
-  const responseArray = response.filter(obj => {
-    if (obj.category === category && obj.branch === branch) {
-      return obj;
-    }
-  })
-  return responseArray;
+  const response = await fila.getNamesByCategory(category, branch);
+
+  return response;
 }
 
 async function getNextByCategory(category, branch) {

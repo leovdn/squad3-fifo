@@ -121,7 +121,7 @@ class Fila {
     // retorna os nomes de todos os jogadores na fila por categoria
     getNamesByCategory(category, branch) {
         return this.dao.all(
-            `SELECT name
+            `SELECT *
             FROM fila
             WHERE category = ?
             AND branch = ?
