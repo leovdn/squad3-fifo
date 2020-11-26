@@ -1,3 +1,5 @@
+@import "style.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -76,7 +78,6 @@ a {
 /* Início tabelas */
 .filas {
   width: 960px;
-
   display: flex;
   justify-content: space-around;
   margin: 0 auto 30px auto;
@@ -112,6 +113,7 @@ a {
 }
 
 .fila-item {
+  width: 70%;
   padding-bottom: 30px;
 }
 
@@ -139,11 +141,12 @@ a {
 .table-scroll {
   height: 220px;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-bottom: 30px;
 }
 
 .filas table {
-  width: 300px;
+  width: 100%;
   border-collapse: collapse;
   text-align: left;
   color: #fff;
@@ -159,8 +162,18 @@ a {
   background: #0b0d1b;
 }
 
+.filas th {
+  background-color: #ffb9a4;
+  color: #1d1d1e;
+  padding: 5px 10px;
+}
+
 .filas td {
-  padding: 10px 10px;
+  padding: 10px;
+}
+
+#container-foto {
+  width: 30px;
 }
 
 .foto {
@@ -192,7 +205,7 @@ a {
 }
 
 /* Responsividade */
-@media only screen and (max-width: 787px) {
+@media only screen and (max-width: 767px) {
   .container-menu img {
     width: 30px;
     height: 30px;
@@ -227,31 +240,27 @@ a {
   }
 
   .fila-item {
-    width: 290px;
+    width: 100%;
     margin-top: 20px;
   }
 }
 
-@media only screen and (min-width: 788px) and (max-width: 979px) {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
   .container-menu {
-    width: 788px;
+    width: 768px;
   }
   .menu {
     width: 80%;
   }
 
   .filas {
-    width: 788px;
+    width: 768px;
   }
 
   .tipo-jogo {
-    width: 788px;
+    width: 768px;
   }
   .tipo-jogo ul {
     margin-left: 10px;
-  }
-
-  .fila-item {
-    width: 250px;
   }
 }

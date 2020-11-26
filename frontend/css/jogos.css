@@ -1,10 +1,11 @@
+@import "style.css";
+
 a {
   text-decoration: none;
   color: #ffb9a4;
 }
 
 /* Header */
-
 .header {
   position: fixed;
   width: 100%;
@@ -70,7 +71,7 @@ a {
 }
 /* Final do Header */
 
-/* Início dos Jogos */
+/* Início dos Jogos 
 /* Início container pesquisa */
 .container-pesquisa {
   width: 960px;
@@ -136,6 +137,7 @@ a {
 }
 /* Final before */
 
+
 /* Início container jogos */
 .container-jogos {
   width: 960px;
@@ -167,7 +169,7 @@ a {
 /* Final container jogos */
 
 /* Responsividade */
-@media only screen and (max-width: 787px) {
+@media only screen and (max-width: 767px) {
   .container-menu img {
     width: 30px;
     height: 30px;
@@ -204,7 +206,7 @@ a {
   }
 }
 
-@media only screen and (min-width: 788px) and (max-width: 979px) {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
   .menu {
     width: 80%;
   }

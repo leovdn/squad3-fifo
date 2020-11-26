@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/jogos.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modal.css">
   <title>Jogos</title>
 </head>
 
@@ -14,16 +14,15 @@
   <header class="header">
     <div class="container-menu">
       <img src="img/logo.svg" alt="Logo">
-
       <nav class="menu">
-        <a href="">Início</a>
+        <a href="#">Início</a>
         <a href="">Mais Jogados</a>
         <a href="">Todos os Títulos</a>
-        <a href="">Unidades</a>
+        <a href="unidades.html">Unidades</a>
         <a href="">Ranking</a>
         <a class="button" href="login.html">Entrar</a>
       </nav>
-      <a id="menu-responsivo" href=""><img src="img/menu icon.svg" alt=""></a>
+      <a id="menu-responsivo" href=""><img src="img/menu icon.svg" alt="Menu"></a>
     </div>
   </header>
 
@@ -39,6 +38,15 @@
     </div>
   </div>
 
+  <div class="modal-bg">
+    <div class="modal">
+      <span class="fechar">X</span>
+      <h3>Quase lá!</h3>
+      <input type="text" name="nome" placeholder="Insira o seu nome">
+      <input type="submit" name="entrar" value="Entrar na Fila">
+    </div>
+  </div>
+
   <div class="before">
     <p class="underline">Os Mais Jogados</p>
     <p class="mais">Ver mais</p>
@@ -46,36 +54,36 @@
 
   <div class="container-jogos">
     <div class="mais-jogados">
-      <a class="opcoes" href=""><img src="img/jogos/fifa.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/street.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/beat saber.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/journey.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/king of tokyo.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/saboteur.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/metal slug.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/the king of fighters.png" alt="""></a>
-      <a class=" opcoes" href=""><img src="img/jogos/codevein.png" alt="""></a>
+      <img class="opcoes-0" src="img/jogos/fifa.png" alt="Fifa">
+      <img class="opcoes-1" src="img/jogos/street.png" alt="Street Fighter">
+      <img class="opcoes-2" src="img/jogos/beat saber.png" alt="Beat Saber">
+      <img class="opcoes-3" src="img/jogos/journey.png" alt="Journey">
+      <img class="opcoes-4" src="img/jogos/king of tokyo.png" alt="King of Tokyo">
+      <img class="opcoes-5" src="img/jogos/saboteur.png" alt="Saboteur">
+      <img class="opcoes-6" src="img/jogos/metal slug.png" alt="Metal Slug">
+      <img class="opcoes-7" src="img/jogos/the king of fighters.png" alt="The king of fighters">
+      <img class="opcoes-8" src="img/jogos/codevein.png" alt="Codevein">
     </div>
   </div>
 
-    <div class=" before">
-        <p class="underline">Todos os Jogos</p>
-        <p class="mais">Ver mais</p>
+  <div class=" before">
+    <p class="underline">Todos os Jogos</p>
+    <p class="mais">Ver mais</p>
+  </div>
+
+  <div id="todos" class="container-jogos">
+    <div class=" todos">
+      <a class="opcoes" href="filasPlaystation.html"><img src="img/jogos/card playstation.png" alt="Playstation"></a>
+      <a class=" opcoes" href="filasFliperama.html"><img src="img/jogos/card fliperama.png" alt="Fliperama"></a>
+      <a class=" opcoes" href="filasBoardgame.html"><img src="img/jogos/card boardgames.png" alt="Boardgames"></a>
+      <a class=" opcoes" href="filasSinuca.html"><img src="img/jogos/card sinuca.png" alt="Sinuca"></a>
+      <a class=" opcoes" href="filasPingPong.html"><img src="img/jogos/card pingpong.png" alt="Ping Pong"></a>
     </div>
-
-    <div id="todos" class="container-jogos">
-      <div class=" todos">
-        <a class="opcoes" href="filas.html"><img src="img/jogos/card playstation.png" alt="""></a>
-        <a class=" opcoes" href=""><img src="img/jogos/card fliperama.png" alt="""></a>
-        <a class=" opcoes" href=""><img src="img/jogos/card boardgames.png" alt="""></a>
-        <a class=" opcoes" href=""><img src="img/jogos/card sinuca.png" alt="""></a>
-        <a class=" opcoes" href=""><img src="img/jogos/card pingpong.png" alt="""></a>
-      </div>
-    </div>
+  </div>
 
 
-    <footer class=" footer"></footer>
-
+  <footer class="footer"></footer>
+  <script src="js/script.js"></script>
 </body>
 
 </html>

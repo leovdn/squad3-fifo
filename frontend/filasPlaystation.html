@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/fila.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <title>Fila PlayStation</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container-menu">
+      <img src="img/logo.svg" alt="Logo">
+
+      <nav class="menu">
+        <a href="">Início</a>
+        <a href="">Mais Jogados</a>
+        <a href="">Todos os Títulos</a>
+        <a href="">Unidades</a>
+        <a href="">Ranking</a>
+        <a class="button" href="">Meu perfil</a>
+      </nav>
+      <a id="menu-responsivo" href=""><img src="img/menu icon.svg" alt="Menu"></a>
+    </div>
+  </header>
+
+
+  <div class="tipo-jogo">
+    <ul>
+      <li><a href="unidades.html">Unidades</a></li>
+      <li>></li>
+      <li><a href="jogos.html">Inicío</a></li>
+      <li>></li>
+      <li>PlayStation</li>
+    </ul>
+    <p>PlayStation</p>
+  </div>
+
+  <section class="filas">
+    <div class="fila-item">
+      <h3>Fila Geral</h3>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <th>#</th>
+            <th>Jogador</th>
+            <th></th>
+            <th>Jogo</th>
+          </thead>
+          <tbody class="table-playstation">       
+
+            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-bg">
+        <div class="modal">
+          <span class="fechar">X</span>
+          <h3>Quase lá!</h3>
+          <form action="http://localhost:3333/santos/fila" method="post">
+            <input type="name" name="name" placeholder="Nome">
+            <select name="game">
+              <optgroup label="Playstation" >
+                <option value="fifa">FIFA</option>
+                <option value="tlou">The Last of Us</option>
+                <option value="sfv">Street Fighter V</option>
+                <option value="beatsaber">Beat Saber</option>
+              </optgroup> 
+              <optgroup hidden label="Board Games" >
+                <option  value="war">WAR</option>
+                <option value="rpg">RPG</option>
+              </optgroup> 
+              <option disabled value="sinuca">Sinuca</option>
+              <option disabled value="fliperama">Fliperama</option>
+            </select>
+            <select name="branch">
+              <option value="santos">Santos</option>
+            </select>            
+            <button type="submit">Entrar</button>
+          </form>
+        </div>
+      </div>
+
+      <a class="join-playstation btn-fila">Entrar</a>
+    
+    </div>
+
+
+  </section>
+
+  <footer class="footer"></footer>
+  <script src="filasPlaystation.js"></script>
+</body>
+
+</html>
