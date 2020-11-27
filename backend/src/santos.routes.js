@@ -13,7 +13,7 @@ santosRouter.get('/', (request, response) => {
 // Método insert
 santosRouter.post('/fila', async (request, response) => {
   let { name, game, category, branch } = request.body;
-  let url = request.headers.referer;
+  let url = 'https://squad3-fifo.leovdn.vercel.app/jogos.html';
   
   if (game === 'fifa' || game === 'tlou' || game === 'sfv') {
     category = 'playstation';
@@ -26,7 +26,7 @@ santosRouter.post('/fila', async (request, response) => {
   try {       
     await insertUser(name, game, category, branch);
     return response.redirect(url);  
-    // return response.({message: `Usuário ${name} criado`});    
+    // return response.json({message: `Usuário ${name} criado`});    
 
   } catch (error) {
     return response.status(400).send(`Erro ao entrar na fila. Tente novamente. ${error}`);
@@ -147,8 +147,8 @@ santosRouter.delete('/fila/:game', async (request, response) => {
 santosRouter.delete('/fila/category/:category', async (request, response) => {
   const params = request.params;
   const data = await getNextByCategory(params.category, thisBranch);
-  // let url = 'http://127.0.0.1:5500/filas.html' || 'https://squad3-fifo.vercel.app/filas.html';
-  let url = request.headers.referer;
+  let url = 'https://squad3-fifo.vercel.app/filasPlaystation.html';
+  // let url = request.headers.referer;
 
   try {
     await deleteByCategory(params.category, thisBranch);
