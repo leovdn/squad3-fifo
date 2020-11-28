@@ -81,6 +81,10 @@
   #select {
     font-size: 18px;
   }
+
+  .unidades {
+    margin-top: 10px;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
