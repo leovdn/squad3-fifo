@@ -3,7 +3,7 @@ const express = require('express');
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
   getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory, getNextByCategory, getSizeByCategory, deleteByCategory } = require('./services/main.js');
 
-const removeFirst = require('./services/temporizador');
+const removeInit = require('./services/removeInit');
 
 const santosRouter = express.Router();
 const thisBranch = 'santos';
@@ -27,6 +27,7 @@ santosRouter.post('/fila', async (request, response) => {
 
   try {       
     await insertUser(name, game, category, branch);
+    removeInit();
     return response.redirect(url);  
     // return response.json({message: `Usuário ${name} criado`});    
 
@@ -156,7 +157,7 @@ santosRouter.delete('/fila/category/:category', async (request, response) => {
     await deleteByCategory(params.category, thisBranch);
     // response.json({message: `Usuário ${data.name} removido da fila ${params.category} de ${thisBranch}`});
     // return response.redirect(url)
-    console.log('removido')
+    console.log(`removido da categoria ${params.category}`)
     
   } catch (error) {
     return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)

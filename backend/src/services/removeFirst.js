@@ -10,28 +10,45 @@ async function getCategoryData(category) {
   return response.data;
 }
 
+async function getGameData(game) {    
+  const response = await api.get(`/fila/names/${game}`);
+  return response.data;
+}
+
 async function handleRemoveFirstCategoryElement(category) {
   const URL = `/fila/category/${category}`;
   try {
     await api.delete(URL);
   } catch (err) {
-    alert('Erro ao deletar caso, tente novamente');
+    console.log('Erro ao deletar caso, tente novamente');
   }  
 }
 
+async function handleRemoveFirstGameElement(game) {
+  const URL = `/fila/${game}`;
+  try {
+    await api.delete(URL);
+  } catch (err) {
+    console.log('Erro ao deletar caso, tente novamente');
+  }  
+}
 
 async function isThereItems(category) {
-  const data = await getCategoryData('playstation');
-  if (data.length < 10) {
-    console.log('Não excluir. Menos de 10 itens')
-  } else {
-      handleRemoveFirstCategoryElement(category);
-  }
+  const data = await getCategoryData(category);
+  return data.length;
+}
+
+async function isThereItemsInGame(game) {
+  const data = await getGameData(game);
+  return data.length;
 }
 
 
 module.exports = {
   handleRemoveFirstCategoryElement: handleRemoveFirstCategoryElement,
+  handleRemoveFirstGameElement: handleRemoveFirstGameElement,
   getCategoryData: getCategoryData,
-  isThereItems: isThereItems
+  isThereItems: isThereItems,
+  isThereItemsInGame: isThereItemsInGame,
+  getGameData: getGameData
 }
