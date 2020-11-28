@@ -15,7 +15,7 @@ santosRouter.post('/fila', async (request, response) => {
   let { name, game, category, branch } = request.body;
   let url = 'https://squad3-fifo.leovdn.vercel.app/jogos.html';
   
-  if (game === 'fifa' || game === 'tlou' || game === 'sfv') {
+  if (game === 'fifa' || game === 'tlou' || game === 'sfv' || game === 'beatsaber') {
     category = 'playstation';
   } else if (game === 'rpg' || game === 'war') {
     category = 'board';
@@ -66,7 +66,7 @@ santosRouter.get('/fila/id/:id', async (request, response) => {
   if (data) {
     return response.json(data);
   } else {
-    return response.status(404).send("ID não encontrado")
+    return response.status(404).send("ID não encontrado") 
   }  
 });
 
@@ -116,7 +116,7 @@ santosRouter.get('/fila/size/:game', async (request, response) => {
   const params = request.params;
   const data = await getSize(params.game, thisBranch);
 
-  return response.json({message: `Existem ${data.playersCount} usuários na fila`});
+  return response.json(data.playersCount);
 });
 
 santosRouter.get('/fila/size/category/:category', async (request, response) => { 
