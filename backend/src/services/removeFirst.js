@@ -1,32 +1,37 @@
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
+const { default: Axios } = require('axios');
 
-async function getCategoryData(category) {
-  const URL = `http://localhost:3333/santos/fila/category/${category}`;
-    
-  const resposta = await fetch(URL);
-  const data = resposta.json()
+const api = Axios.create({
+  baseURL: 'http://localhost:3333/santos'
+})
 
-  return data;
+async function getCategoryData(category) {    
+  const response = await api.get(`/fila/category/${category}`);
+  return response.data;
 }
 
 async function handleRemoveFirstCategoryElement(category) {
-  const URL = `http://localhost:3333/santos/fila/category/${category}`;
+  const URL = `/fila/category/${category}`;
   try {
-    await fetch(URL, {
-      method: 'DELETE',
-    });
+    await api.delete(URL);
   } catch (err) {
     alert('Erro ao deletar caso, tente novamente');
   }  
 }
 
-async function isThereItems() {
+
+async function isThereItems(category) {
   const data = await getCategoryData('playstation');
-  if (data.length) {
-    setInterval(() => {
-      handleRemoveFirstCategoryElement('playstation');
-    }, 10000);
+  if (data.length < 10) {
+    console.log('Não excluir. Menos de 10 itens')
+  } else {
+      handleRemoveFirstCategoryElement(category);
   }
 }
 
-isThereItems();
+
+module.exports = {
+  handleRemoveFirstCategoryElement: handleRemoveFirstCategoryElement,
+  getCategoryData: getCategoryData,
+  isThereItems: isThereItems
+}
