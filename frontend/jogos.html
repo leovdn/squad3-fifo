@@ -11,6 +11,18 @@
 
 <body>
 
+  <div id="abrir-menu" class="bg-menu-responsivo">
+    <span id="fechar-menu">&times;</span>
+    <nav class="container-menu-responsivo">
+      <a href="#">Início</a>
+      <a href="">Mais Jogados</a>
+      <a href="">Todos os Títulos</a>
+      <a href="index.html">Unidades</a>
+      <a href="">Ranking</a>
+      <a href="login.html">Entrar</a>
+    </nav>
+  </div>
+
   <header class="header">
     <div class="container-menu">
       <img src="img/logo.svg" alt="Logo">
@@ -18,18 +30,19 @@
         <a href="#">Início</a>
         <a href="">Mais Jogados</a>
         <a href="">Todos os Títulos</a>
-        <a href="unidades.html">Unidades</a>
+        <a href="index.html">Unidades</a>
         <a href="">Ranking</a>
         <a class="button" href="login.html">Entrar</a>
       </nav>
-      <a id="menu-responsivo" href=""><img src="img/menu icon.svg" alt="Menu"></a>
+      <img id="menu-responsivo" src="img/menu icon.svg" alt="Menu"></a>
     </div>
   </header>
 
   <div class="container-pesquisa">
     <ul>
-      <li><a href="unidades.html">Unidades</a></li>
-      <li>></li>
+      <li id="active"><a href="index.html">&lt;</a></li>
+      <li><a href="index.html">Unidades</a></li>
+      <li>&gt;</li>
       <li>Inicío</li>
     </ul>
     <h2 class="nome-unidade">Unidade Santos</h2>
@@ -37,6 +50,7 @@
       <input class="box-pesquisa" type="text" placeholder="Pesquisar por títulos...">
     </div>
   </div>
+
 
   <div class="modal-bg">
     <div class="modal">
@@ -84,6 +98,7 @@
 
   <footer class="footer"></footer>
   <script src="js/script.js"></script>
+  <script src="js/menuResponsivo.js"></script>
 </body>
 
 </html>

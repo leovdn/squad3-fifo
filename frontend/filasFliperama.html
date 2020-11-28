@@ -11,10 +11,21 @@
 
 <body>
 
+  <div id="abrir-menu" class="bg-menu-responsivo">
+    <span id="fechar-menu">&times;</span>
+    <nav class="container-menu-responsivo">
+      <a href="#">Início</a>
+      <a href="">Mais Jogados</a>
+      <a href="">Todos os Títulos</a>
+      <a href="index.html">Unidades</a>
+      <a href="">Ranking</a>
+      <a href="login.html">Entrar</a>
+    </nav>
+  </div>
+
   <header class="header">
     <div class="container-menu">
       <img src="img/logo.svg" alt="Logo">
-
       <nav class="menu">
         <a href="">Início</a>
         <a href="">Mais Jogados</a>
@@ -23,22 +34,22 @@
         <a href="">Ranking</a>
         <a class="button" href="">Meu perfil</a>
       </nav>
-      <a id="menu-responsivo" href=""><img src="img/menu icon.svg" alt="Menu"></a>
+      <img id="menu-responsivo" src="img/menu icon.svg" alt="Menu">
     </div>
   </header>
 
 
   <div class="tipo-jogo">
     <ul>
-      <li><a href="unidades.html">Unidades</a></li>
-      <li>></li>
+      <li id="active"><a href="jogos.html">&lt;</a></li>
+      <li><a href="index.html">Unidades</a></li>
+      <li>&gt;</li>
       <li><a href="jogos.html">Inicío</a></li>
-      <li>></li>
+      <li>&gt;</li>
       <li>Fliperama</li>
     </ul>
     <p>Fliperama</p>
   </div>
-
   <section class="filas">
     <div class="fila-item">
 
@@ -80,6 +91,7 @@
 
   <footer class="footer"></footer>
   <script src="filasFliperama.js"></script>
+  <script src="js/menuResponsivo.js"></script>
 </body>
 
 </html>
