@@ -140,7 +140,8 @@ santosRouter.delete('/fila/:game', async (request, response) => {
 
   try {
     await deleteFirstElement(params.game, thisBranch);
-    response.json({message: `Usuário ${data.name} removido da fila ${params.game} de ${thisBranch}`});
+    // response.json({message: `Usuário ${data.name} removido da fila ${params.game} de ${thisBranch}`});
+    console.log(`${data.name} removido da fila do jogo ${params.game}`)
     
   } catch (error) {
     return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
@@ -157,7 +158,7 @@ santosRouter.delete('/fila/category/:category', async (request, response) => {
     await deleteByCategory(params.category, thisBranch);
     // response.json({message: `Usuário ${data.name} removido da fila ${params.category} de ${thisBranch}`});
     // return response.redirect(url)
-    console.log(`removido da categoria ${params.category}`)
+    console.log(`${data.name} removido da categoria ${params.category}`)
     
   } catch (error) {
     return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
