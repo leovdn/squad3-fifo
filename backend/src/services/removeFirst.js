@@ -1,32 +1,54 @@
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
+const { default: Axios } = require('axios');
 
-async function getCategoryData(category) {
-  const URL = `http://localhost:3333/santos/fila/category/${category}`;
-    
-  const resposta = await fetch(URL);
-  const data = resposta.json()
+const api = Axios.create({
+  baseURL: 'http://localhost:3333/santos'
+})
 
-  return data;
+async function getCategoryData(category) {    
+  const response = await api.get(`/fila/category/${category}`);
+  return response.data;
+}
+
+async function getGameData(game) {    
+  const response = await api.get(`/fila/names/${game}`);
+  return response.data;
 }
 
 async function handleRemoveFirstCategoryElement(category) {
-  const URL = `http://localhost:3333/santos/fila/category/${category}`;
+  const URL = `/fila/category/${category}`;
   try {
-    await fetch(URL, {
-      method: 'DELETE',
-    });
+    await api.delete(URL);
   } catch (err) {
-    alert('Erro ao deletar caso, tente novamente');
+    console.log('Erro ao deletar caso, tente novamente');
   }  
 }
 
-async function isThereItems() {
-  const data = await getCategoryData('playstation');
-  if (data.length) {
-    setInterval(() => {
-      handleRemoveFirstCategoryElement('playstation');
-    }, 10000);
-  }
+async function handleRemoveFirstGameElement(game) {
+  const URL = `/fila/${game}`;
+  try {
+    await api.delete(URL);
+  } catch (err) {
+    console.log('Erro ao deletar caso, tente novamente');
+  }  
 }
 
-isThereItems();
+async function isThereItems(category) {
+  const data = await getCategoryData(category);
+  return data.length;
+}
+
+async function isThereItemsInGame(game) {
+  const data = await getGameData(game);
+  return data.length;
+}
+
+
+module.exports = {
+  handleRemoveFirstCategoryElement: handleRemoveFirstCategoryElement,
+  handleRemoveFirstGameElement: handleRemoveFirstGameElement,
+  getCategoryData: getCategoryData,
+  isThereItems: isThereItems,
+  isThereItemsInGame: isThereItemsInGame,
+  getGameData: getGameData
+}

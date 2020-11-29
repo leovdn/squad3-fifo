@@ -116,6 +116,18 @@ a {
 }
 /* Final Header */
 
+/* Início Timer*/
+
+.timer-fila {
+  width: 960px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto 30px auto;
+  text-align: center;
+}
+
+/* Final Timer */
+
 /* Início tabelas */
 .filas {
   width: 960px;

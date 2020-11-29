@@ -3,6 +3,8 @@ const express = require('express');
 const { getAllData, insertUser, deleteUser, getById, deleteFirstElement,
   getNext, getSize, getNames, resetTable, getAllDataByBranch, getNamesByCategory, getNextByCategory, getSizeByCategory, deleteByCategory } = require('./services/main.js');
 
+const removeInit = require('./services/removeInit');
+
 const santosRouter = express.Router();
 const thisBranch = 'santos';
 
@@ -15,7 +17,7 @@ santosRouter.post('/fila', async (request, response) => {
   let { name, game, category, branch } = request.body;
   let url = 'https://squad3-fifo.leovdn.vercel.app/jogos.html';
   
-  if (game === 'fifa' || game === 'tlou' || game === 'sfv') {
+  if (game === 'fifa' || game === 'tlou' || game === 'sfv' || game === 'beatsaber') {
     category = 'playstation';
   } else if (game === 'rpg' || game === 'war') {
     category = 'board';
@@ -25,6 +27,7 @@ santosRouter.post('/fila', async (request, response) => {
 
   try {       
     await insertUser(name, game, category, branch);
+    removeInit();
     return response.redirect(url);  
     // return response.json({message: `Usuário ${name} criado`});    
 
@@ -66,7 +69,7 @@ santosRouter.get('/fila/id/:id', async (request, response) => {
   if (data) {
     return response.json(data);
   } else {
-    return response.status(404).send("ID não encontrado")
+    return response.status(404).send("ID não encontrado") 
   }  
 });
 
@@ -116,7 +119,7 @@ santosRouter.get('/fila/size/:game', async (request, response) => {
   const params = request.params;
   const data = await getSize(params.game, thisBranch);
 
-  return response.json({message: `Existem ${data.playersCount} usuários na fila`});
+  return response.json(data.playersCount);
 });
 
 santosRouter.get('/fila/size/category/:category', async (request, response) => { 
@@ -153,7 +156,8 @@ santosRouter.delete('/fila/category/:category', async (request, response) => {
   try {
     await deleteByCategory(params.category, thisBranch);
     // response.json({message: `Usuário ${data.name} removido da fila ${params.category} de ${thisBranch}`});
-    return response.redirect(url)
+    // return response.redirect(url)
+    console.log(`removido da categoria ${params.category}`)
     
   } catch (error) {
     return response.status(404).send(`Não há mais jogadores na fila de "${params.game}".`)
