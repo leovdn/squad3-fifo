@@ -1,16 +1,27 @@
 const {handleRemoveFirstCategoryElement, handleRemoveFirstGameElement, getCategoryData, isThereItems, isThereItemsInGame, getGameData} = require('./removeFirst');
 
 
+async function removePlaystationElement(categoryGames) {
+  const categoryItems = await isThereItems(categoryGames);
+  const length = categoryItems.length;
+  const [{ game, category }] = categoryItems;
 
-async function removePlaystationElement() {
-  setTimeout(async () => {
-    const categoryItems = await isThereItems('playstation');
-    if(categoryItems > 5) {
-      handleRemoveFirstCategoryElement('playstation')
-    } else {
-      console.log('Não remover do PS4. Menor que 5 itens');
-    }
-  }, 20000);
+  function setTime(game, timer) {
+    setTimeout(() => {
+      handleRemoveFirstCategoryElement(categoryGames)
+      console.log(`${game} removido após ${timer} milissegundos`);
+    }, timer)
+  }
+
+  if(game === 'fifa') {
+    setTime(game, 4000);
+  } else if (game === 'tlou') {
+    setTime(game, 8000)
+  } else if (game === 'sfv') {
+    setTime(game, 12000)
+  } else if (game === 'beatsaber') {
+    setTime(game, 16000)
+  }
 }  
 
 async function removeBoardElement() {

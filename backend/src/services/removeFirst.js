@@ -31,7 +31,7 @@ async function handleRemoveFirstCategoryElement(category) {
   try {
     await api.delete(URL);
   } catch (err) {
-    console.log('Erro ao deletar caso, tente novamente');
+    console.log(`Sem itens na categoria ${category} para remover`);
   }  
 }
 
@@ -40,13 +40,13 @@ async function handleRemoveFirstGameElement(game) {
   try {
     await api.delete(URL);
   } catch (err) {
-    console.log('Erro ao deletar caso, tente novamente');
+    console.log(`Sem itens do jogo ${game} para remover. Erro ${err}`);
   }  
 }
 
 async function isThereItems(category) {
   const data = await getCategoryData(category);
-  return data.length;
+  return data;
 }
 
 async function isThereItemsInGame(game) {
