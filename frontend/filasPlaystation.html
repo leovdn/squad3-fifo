@@ -86,29 +86,21 @@
           <span class="fechar">X</span>
           <h3>Quase lá!</h3>
           <form action="http://localhost:3333/santos/fila" method="post">
-            <input type="name" name="name" placeholder="Nome">
+            <input type="text" name="name" placeholder="Nome" required>
             <select name="game">
-              <optgroup label="Playstation" >
                 <option value="fifa">FIFA</option>
                 <option value="tlou">The Last of Us</option>
                 <option value="sfv">Street Fighter V</option>
                 <option value="beatsaber">Beat Saber</option>
-              </optgroup> 
-              <optgroup hidden label="Board Games" >
-                <option  value="war">WAR</option>
-                <option value="rpg">RPG</option>
-              </optgroup> 
-              <option disabled value="sinuca">Sinuca</option>
-              <option disabled value="fliperama">Fliperama</option>
             </select>
-            <select name="branch">
+            <select hidden name="branch">
               <option value="santos">Santos</option>
             </select>            
-            <button type="submit">Entrar</button>
+            <button type="submit">Entrar na fila</button>
           </form>
         </div>
       </div>
-      <a class="join-playstation btn-fila">Entrar</a>    
+      <a class="join-playstation btn-fila">Entrar na fila</a>    
     </div>
 
 
