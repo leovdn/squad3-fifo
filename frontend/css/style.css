@@ -38,7 +38,7 @@
 }
 
 html {
-  background-image: linear-gradient(#1d1d1d, #1e2033);
+  background-image: linear-gradient(#1d1d1d 10%, #1e2033 60%);
 }
 
 html,
