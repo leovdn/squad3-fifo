@@ -5,14 +5,25 @@ const api = Axios.create({
   baseURL: 'http://localhost:3333/santos'
 })
 
-async function getCategoryData(category) {    
-  const response = await api.get(`/fila/category/${category}`);
-  return response.data;
+async function getCategoryData(category) {   
+  const URL = `/fila/category/${category}`;
+
+  try {
+    const response = await api.get(URL);
+    return response.data;    
+  } catch (error) {
+    return error;
+  }
 }
 
-async function getGameData(game) {    
-  const response = await api.get(`/fila/names/${game}`);
-  return response.data;
+async function getGameData(game) {
+  try {
+    const response = await api.get(`/fila/names/${game}`);
+    return response.data;
+  } catch (error) {
+    return error
+  }    
+  
 }
 
 async function handleRemoveFirstCategoryElement(category) {
