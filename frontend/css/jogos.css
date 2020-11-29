@@ -5,6 +5,10 @@ a {
   color: #ffb9a4;
 }
 
+body {
+  animation: showModal 500ms forwards;
+}
+
 /* Header */
 .header {
   position: fixed;
@@ -361,5 +365,13 @@ a {
   .box-pesquisa,
   .before {
     width: 700px;
+  }
+}
+
+@keyframes showModal {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
   }
 }

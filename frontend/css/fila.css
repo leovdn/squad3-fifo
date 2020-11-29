@@ -8,6 +8,7 @@
 a {
   text-decoration: none;
   color: #ffb9a4;
+  transition: ease-in-out 200ms;
 }
 
 .header {
@@ -118,14 +119,36 @@ a {
 
 /* Início Timer*/
 
+
 .timer-fila {
-  width: 960px;
+  max-width: 300px;
   display: flex;
   justify-content: space-around;
-  margin: 0 auto 30px auto;
+  margin: 0 auto;
   text-align: center;
+  color: #fff;
+  animation: showTable 1200ms forwards;
 }
 
+.timer-fila table {
+  font-family: Neue55;
+  margin-top: 24px;
+}
+
+.timer-fila tr {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.timer-fila td {
+  color: #ffb9a4;
+}
+
+.table-time td {
+  font-family: Neue55;
+  margin-top: 122px;
+
+}
 /* Final Timer */
 
 /* Início tabelas */
@@ -200,6 +223,10 @@ a {
   overflow-y: scroll;
   overflow-x: hidden;
   margin-bottom: 30px;
+}
+
+.filas {
+  animation: showTable 800ms forwards;
 }
 
 .filas table {
@@ -323,5 +350,13 @@ a {
   }
   .tipo-jogo ul {
     margin-left: 10px;
+  }
+}
+
+@keyframes showTable {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
   }
 }
