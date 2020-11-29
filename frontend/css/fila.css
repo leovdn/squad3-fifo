@@ -118,14 +118,37 @@ a {
 
 /* Início Timer*/
 
+
 .timer-fila {
-  width: 960px;
+  max-width: 300px;
+  max-height: 100px;
   display: flex;
   justify-content: space-around;
-  margin: 0 auto 30px auto;
+  margin: 0 auto;
   text-align: center;
+  color: #fff;
 }
 
+.timer-fila table {
+  font-family: Neue55;
+  margin-top: 24px;
+}
+
+.timer-fila th {
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.timer-fila td {
+  color: #ffb9a4;
+  font-family: Neue55;
+}
+
+.timer-fila table tbody {
+  font-size: 20px;
+  line-height: 2em;
+}
 /* Final Timer */
 
 /* Início tabelas */
