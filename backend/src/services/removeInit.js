@@ -1,7 +1,7 @@
 const {removePlaystationElement, removeBoardElement, removeGameElement} = require('./temporizador');
 
 function initFunctions() {
-  // removePlaystationElement();
+  removePlaystationElement('playstation');
   removeBoardElement();
   removeGameElement('fliperama');
   removeGameElement('pingpong');

@@ -5,14 +5,25 @@ const api = Axios.create({
   baseURL: 'http://localhost:3333/santos'
 })
 
-async function getCategoryData(category) {    
-  const response = await api.get(`/fila/category/${category}`);
-  return response.data;
+async function getCategoryData(category) {   
+  const URL = `/fila/category/${category}`;
+
+  try {
+    const response = await api.get(URL);
+    return response.data;    
+  } catch (error) {
+    return error;
+  }
 }
 
-async function getGameData(game) {    
-  const response = await api.get(`/fila/names/${game}`);
-  return response.data;
+async function getGameData(game) {
+  try {
+    const response = await api.get(`/fila/names/${game}`);
+    return response.data;
+  } catch (error) {
+    return error
+  }    
+  
 }
 
 async function handleRemoveFirstCategoryElement(category) {
@@ -20,7 +31,7 @@ async function handleRemoveFirstCategoryElement(category) {
   try {
     await api.delete(URL);
   } catch (err) {
-    console.log('Erro ao deletar caso, tente novamente');
+    console.log(`Sem itens na categoria ${category} para remover`);
   }  
 }
 
@@ -29,13 +40,13 @@ async function handleRemoveFirstGameElement(game) {
   try {
     await api.delete(URL);
   } catch (err) {
-    console.log('Erro ao deletar caso, tente novamente');
+    console.log(`Sem itens do jogo ${game} para remover. Erro ${err}`);
   }  
 }
 
 async function isThereItems(category) {
   const data = await getCategoryData(category);
-  return data.length;
+  return data;
 }
 
 async function isThereItemsInGame(game) {
