@@ -1,6 +1,6 @@
-# Squad 03 - TurnApp <img src="frontend/img/logo.svg" width="28"/>
+# Squad 03 - TurnApp <img src="img/logo.svg" width="28"/>
 <p align="center">
-  <img src="frontend/img/TurnApp3x.png" />
+  <img src="img/TurnApp3x.png" />
 </p>
 O TurnApp foi desenvolvido buscando facilitar a organização e o gerenciamento das filas para o espaço de jogos da FCamara.
 
