@@ -2,7 +2,7 @@ const {removePlaystationElement, removeBoardElement, removeGameElement} = requir
 
 function initFunctions() {
   removePlaystationElement('playstation');
-  removeBoardElement();
+  removeBoardElement('board');
   removeGameElement('fliperama');
   removeGameElement('pingpong');
   removeGameElement('sinuca');
