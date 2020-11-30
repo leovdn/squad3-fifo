@@ -16,5 +16,11 @@ Projeto separado em duas pastas principais: Backend(API) e Frontend(Client). Des
 - **a) :computer: FrontEnd:** **<a href="https://turnapp.vercel.app">TurnApp</a>**
 - **b) :gear: Iniciar o servidor local:** **<a href="https://github.com/leovdn/squad3-fifo/tree/master/backend"> :file_folder: Siga esta instruções</a>** no Readme da pasta backend.
 
-
 Cada uma das duas pastas possui em seu README instruções detalhadas para a execução do TurnApp
+
+
+### :octocat: Contribuidores 
+- **UX/UI Design: <a href="https://www.behance.net/fabiocarcavalli">Fábio Carvavalli</a>**
+- **Front-End: <a href="https://github.com/TahiaPassos">Tahiana Passos</a>**
+- **Back-end, Front-End & Server : <a href="https://github.com/leovdn">Leonardo Dantas</a>**
+- **Back-end & Banco de Dados: <a href="https://github.com/Diegoslourenco">Diego Lourenço</a>**
