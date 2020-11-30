@@ -9,13 +9,13 @@ const santosRouter = express.Router();
 const thisBranch = 'santos';
 
 santosRouter.get('/', (request, response) => {
-  return response.redirect('https://squad3-fifo.vercel.app/jogos.html')
+  return response.redirect('https://turnapp.vercel.app/jogos.html')
 })
 
 // Método insert
 santosRouter.post('/fila', async (request, response) => {
   let { name, game, category, branch } = request.body;
-  let url = 'https://squad3-fifo.leovdn.vercel.app/jogos.html';
+  let url = 'https://turnapp.vercel.app/jogos.html';
   
   if (game === 'fifa' || game === 'tlou' || game === 'sfv' || game === 'beatsaber') {
     category = 'playstation';
@@ -29,21 +29,11 @@ santosRouter.post('/fila', async (request, response) => {
     await insertUser(name, game, category, branch);
     removeInit();
     return response.redirect(url);  
-    // return response.json({message: `Usuário ${name} criado`});    
 
   } catch (error) {
     return response.status(400).send(`Erro ao entrar na fila. Tente novamente. ${error}`);
   }
 });
-
-
-// === Métodos get ===
-// Retorna todos os itens da fila
-// santosRouter.get('/fila', async (request, response) => {
-//   const data = await getAllData().then(data => data);
-
-//   response.json(data);
-// });
 
 santosRouter.get('/fila', async (request, response) => {
   const data = await getAllDataByBranch(thisBranch);
@@ -80,7 +70,6 @@ santosRouter.get('/fila/category/:category', async (request, response) => {
   const data = await getNamesByCategory(params.category, thisBranch);
   if (data.length > 0) {
     return response.json(data)
-
   } else {
     return response.status(404).send(`Não há filas para a categoria "${params.game}".`)
   }
@@ -93,7 +82,6 @@ santosRouter.get('/fila/names/:game', async (request, response) => {
   const data = await getNames(params.game, thisBranch);
   if (data.length > 0) {
     return response.json(data)
-
   } else {
     return response.status(404).send(`Não há filas para o jogo "${params.game}".`)
   }
@@ -129,18 +117,13 @@ santosRouter.get('/fila/size/category/:category', async (request, response) => {
   return response.json({message: `Existem ${data.playersCount} usuários na fila`});
 });
 
-
-
-
 // Métodos delete
-
 santosRouter.delete('/fila/:game', async (request, response) => {
   const params = request.params;
   const data = await getNext(params.game, thisBranch);
 
   try {
     await deleteFirstElement(params.game, thisBranch);
-    // response.json({message: `Usuário ${data.name} removido da fila ${params.game} de ${thisBranch}`});
     console.log(`${data.name} removido da fila do jogo ${params.game}`)
     
   } catch (error) {
@@ -151,13 +134,9 @@ santosRouter.delete('/fila/:game', async (request, response) => {
 santosRouter.delete('/fila/category/:category', async (request, response) => {
   const params = request.params;
   const data = await getNextByCategory(params.category, thisBranch);
-  let url = 'https://squad3-fifo.vercel.app/filasPlaystation.html';
-  // let url = request.headers.referer;
 
   try {
     await deleteByCategory(params.category, thisBranch);
-    // response.json({message: `Usuário ${data.name} removido da fila ${params.category} de ${thisBranch}`});
-    // return response.redirect(url)
     console.log(`${data.name} removido da categoria ${params.category}`)
     
   } catch (error) {
@@ -182,7 +161,6 @@ santosRouter.delete('/delete/:id', async (request, response) => {
 
 santosRouter.delete('/reset', async (request, response) => {
   const reset = await resetTable();
-
   return response.send(reset);
 });
 
