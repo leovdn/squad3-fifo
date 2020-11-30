@@ -1,38 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <title>FGames</title>
+  <link rel="stylesheet" href="css/unidades.css">
+  <title>Unidades</title>
 </head>
 
 <body>
+  <header class="header">
+    <img src="img/logo.svg" alt="Logo">
+  </header>
 
-  <video id="video-bg" autoplay muted loop>
-    <source src="/img/video.mp4">
-  </video>
-  <div class="login">
-    <div class="container">
-      <h1> Bem-vindo(a) ao TurnApp!</h1>
-      <p>Entre ou cadastre-se para poder aproveitar seus jogos com maior comodidade</p>
-      <form class="form">
-        <label for="email">E-mail</label>
-        <input type="text" name="email" id="email" placeholder="Insira o seu e-mail">
 
-        <label for="senha">Senha</label>
-        <input type="password" name="senha" id="senha" placeholder="Insira a sua senha">
+  <div class="container">
+    <p id="welcome"> Seja bem-vindo(a) ao</p>
+    <img id="nome" src="img/TurnApp2x.png" alt="Turn App">
+    <p id="select">Selecione a unidade desejada</p>
 
-        <div class="btn">
-          <button>Enviar</button>
-          <p>Ainda não se cadastrou? Sem problemas!</p>
-          <a href="#">Clique aqui</a>
-        </div>
+    <div class="container-unidades">
+      <div class="unidades">
+        <a href="jogos.html"><img src="img/unidades/card_unidade_santos1.png" alt="Unidade Santos"></a>
+      </div>
 
-      </form>
+      <div class="unidades">
+        <a href="#"><img src="img/unidades/card unidade SP@3x.png" alt="Unidade São Paulo"></a>
+      </div>
     </div>
   </div>
+
+  <footer class="footer"></footer>
 </body>
 
 </html>

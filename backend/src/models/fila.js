@@ -7,9 +7,9 @@ class Fila {
         const sql =
         `CREATE TABLE IF NOT EXISTS fila (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name Text,
+            name Text NOT NULL,
             game Text,
-            categoty TEXT,
+            category TEXT,
             branch Text)`
         return this.dao.run(sql)
     }
@@ -96,7 +96,7 @@ class Fila {
     // retorna o próximo jogador da fila por jogo
     getNextByGame(game, branch) {
         return this.dao.get(
-            `SELECT name FROM fila
+            `SELECT * FROM fila
             WHERE game = ?
             AND branch = ?
             ORDER BY id ASC
@@ -121,7 +121,7 @@ class Fila {
     // retorna os nomes de todos os jogadores na fila por categoria
     getNamesByCategory(category, branch) {
         return this.dao.all(
-            `SELECT name
+            `SELECT *
             FROM fila
             WHERE category = ?
             AND branch = ?

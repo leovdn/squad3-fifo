@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/fila.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <title>Fila PlayStation</title>
+</head>
+
+<body>
+
+  
+  <div id="abrir-menu" class="bg-menu-responsivo">
+    <span id="fechar-menu">&times;</span>
+    <nav class="container-menu-responsivo">
+      <a href="#">Início</a>
+      <a href="">Mais Jogados</a>
+      <a href="">Todos os Títulos</a>
+      <a href="index.html">Unidades</a>
+      <a href="">Ranking</a>
+      <a href="login.html">Entrar</a>
+    </nav>
+  </div>
+
+  <header class="header">
+    <div class="container-menu">
+      <img src="img/logo.svg" alt="Logo">
+      <nav class="menu">
+        <a href="">Início</a>
+        <a href="">Mais Jogados</a>
+        <a href="">Todos os Títulos</a>
+        <a href="">Unidades</a>
+        <a href="">Ranking</a>
+        <a class="button" href="">Meu perfil</a>
+      </nav>
+      <img id="menu-responsivo" src="img/menu icon.svg" alt="Menu">
+    </div>
+  </header>
+
+  <div class="tipo-jogo">
+    <ul>
+      <li id="active"><a href="jogos.html">&lt;</a></li>
+      <li><a href="index.html">Unidades</a></li>
+      <li>&gt;</li>
+      <li><a href="jogos.html">Inicío</a></li>
+      <li>&gt;</li>
+      <li>PlayStation</li>
+    </ul>
+    <p>PlayStation</p>
+    <div class="timer-fila">
+      <table>
+        <thead>
+          <th>Tempo de Espera</th>
+        </thead>
+        <tbody class="table-time">
+  
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  <section class="filas">
+    <div class="fila-item">
+      <h3>Fila Geral</h3>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <th>#</th>
+            <th>Jogador</th>
+            <th></th>
+            <th>Jogo</th>
+          </thead>
+          <tbody class="table-playstation">       
+
+            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-bg">
+        <div class="modal">
+          <span class="fechar">X</span>
+          <h3>Quase lá!</h3>
+          <form action="http://localhost:3333/santos/fila" method="post">
+            <input type="text" name="name" placeholder="Nome" required>
+            <select name="game">
+                <option value="fifa">FIFA</option>
+                <option value="tlou">The Last of Us</option>
+                <option value="sfv">Street Fighter V</option>
+                <option value="beatsaber">Beat Saber</option>
+            </select>
+            <select hidden name="branch">
+              <option value="santos">Santos</option>
+            </select>            
+            <button type="submit">Entrar na fila</button>
+          </form>
+        </div>
+      </div>
+      <a class="join-playstation btn-fila">Entrar na fila</a>    
+    </div>
+
+
+  </section>
+
+  <footer class="footer"></footer>
+  <script src="/js/pages/filasPlaystation.js"></script>
+  <script src="js/menuResponsivo.js"></script>
+</body>
+
+</html>

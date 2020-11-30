@@ -1,10 +1,15 @@
+@import "style.css";
+
 a {
   text-decoration: none;
   color: #ffb9a4;
 }
 
-/* Header */
+body {
+  animation: showModal 500ms forwards;
+}
 
+/* Header */
 .header {
   position: fixed;
   width: 100%;
@@ -54,6 +59,47 @@ a {
   display: none;
 }
 
+.bg-menu-responsivo {
+  position: fixed;
+  width: 100%;
+  height: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  transition: 0.5s;
+  overflow-y: hidden;
+  z-index: 1;
+}
+
+#fechar-menu {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  padding: 0 8px;
+  background: transparent;
+  font-family: Neue65;
+  font-size: 40px;
+  color: #ffb9a4;
+  cursor: pointer;
+}
+
+.container-menu-responsivo {
+  width: 100%;
+  text-align: center;
+  font-family: Neue55;
+}
+
+.container-menu-responsivo a {
+  margin-top: 10px;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #ffb9a4;
+  display: block;
+}
+
 .button {
   padding: 10px 20px;
   border: 1px solid #707070;
@@ -70,12 +116,16 @@ a {
 }
 /* Final do Header */
 
-/* Início dos Jogos */
+/* Início dos Jogos 
 /* Início container pesquisa */
 .container-pesquisa {
   width: 960px;
   margin: 110px auto 0 auto;
   padding: 10px 0;
+}
+
+.container-pesquisa #active {
+  display: none;
 }
 
 .container-pesquisa ul {
@@ -136,6 +186,95 @@ a {
 }
 /* Final before */
 
+/* Início Modal */
+.modal-bg {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.bg-active {
+  visibility: visible;
+}
+
+.modal {
+  background: #1d1e28;
+  position: relative;
+  width: 350px;
+  height: 200px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0 8px;
+  background: transparent;
+  font-family: Neue65;
+  font-size: 25px;
+  color: #ffb9a4;
+}
+
+.modal span:hover {
+  background: #ffb9a4;
+  color: #1d1d1e;
+  cursor: pointer;
+}
+
+.modal h3 {
+  display: inline-block;
+  margin-top: 30px;
+  font-family: Neue55;
+  font-weight: normal;
+}
+
+.modal input {
+  display: block;
+  outline: none;
+  margin: 0 auto;
+}
+
+.modal input[type="text"] {
+  margin: 0 auto;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ffb9a4;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 14px;
+  color: #ffb9a4;
+  opacity: 50%;
+}
+
+.modal input[type="submit"] {
+  background: transparent;
+  margin: 20px auto 0 auto;
+  padding: 10px 20px;
+  border: 1px solid #707070;
+  border-radius: 10px;
+  color: #ffb9a4;
+  cursor: pointer;
+}
+
+.modal input[type="submit"]:hover {
+  background: #ffb9a4;
+  color: #1d1d1e;
+}
+
+.modal input::placeholder {
+  color: #ffb9a4;
+}
+/* Final do Modal */
+
 /* Início container jogos */
 .container-jogos {
   width: 960px;
@@ -167,7 +306,7 @@ a {
 /* Final container jogos */
 
 /* Responsividade */
-@media only screen and (max-width: 787px) {
+@media only screen and (max-width: 767px) {
   .container-menu img {
     width: 30px;
     height: 30px;
@@ -178,7 +317,11 @@ a {
   }
   #menu-responsivo {
     display: block;
-    width: 25px;
+    cursor: pointer;
+  }
+
+  .container-pesquisa #active {
+    display: block;
   }
 
   .container-pesquisa .nome-unidade {
@@ -190,7 +333,7 @@ a {
     width: 300px;
   }
 
-  .container-pesquisa ul {
+  .container-pesquisa ul li {
     display: none;
   }
 
@@ -204,7 +347,7 @@ a {
   }
 }
 
-@media only screen and (min-width: 788px) and (max-width: 979px) {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
   .menu {
     width: 80%;
   }
@@ -222,5 +365,13 @@ a {
   .box-pesquisa,
   .before {
     width: 700px;
+  }
+}
+
+@keyframes showModal {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
   }
 }

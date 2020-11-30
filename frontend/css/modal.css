@@ -1,0 +1,142 @@
+
+/* Início Modal */
+.modal-bg {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.bg-active {
+  visibility: visible;
+  animation: showModal 500ms forwards;
+}
+
+.modal {
+  background-image: linear-gradient(180deg, #1d1d1d, #1e2033);
+  position: relative;
+  width: 350px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: transparent;
+  font-family: Neue65;
+  font-size: 14px;
+  color: #ffb9a4;
+}
+
+.modal span:hover {
+  background: #ffb9a4;
+  color: #1d1d1e;
+  cursor: pointer;
+}
+
+.modal h3 {
+  display: inline-block;
+  margin-top: 30px;
+  font-family: Neue55;
+  font-weight: normal;
+}
+
+
+/* 
+.modal button[type="submit"] {
+  background: transparent;
+  margin: 20px auto 0 auto;
+  padding: 10px 20px;
+  border: 1px solid #707070;
+  border-radius: 10px;
+  color: #ffb9a4;
+  cursor: pointer;
+}
+
+.modal button[type="submit"]:hover {
+  background: #ffb9a4;
+  color: #1d1d1e;
+} */
+
+
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.modal form input {
+  display: block;
+  outline: none;
+  margin: 0 auto;
+}
+
+.modal form input + input {
+  margin-top: 18px;
+}
+
+.modal form input[type="text"], .modal form select {
+  margin: 8px auto;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ffb9a4;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 14px;
+  color: #ffb9a4;
+}
+
+.modal input::placeholder {
+  color: #ffb9a4;
+}
+
+.modal form select:focus {
+  background: #1e2033;
+}
+
+.modal form select option {
+  font-size: 16px;
+  padding: 4px;
+}
+
+.modal form button {
+  cursor: pointer;
+  margin: 8px auto 16px auto;
+  padding: 10px;
+  border: 1px solid #ffb9a4;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 14px;
+  color: #ffb9a4;
+}
+
+.modal button:hover {
+  background: #ffb9a4;
+  color: #1d1d1e;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+}
+
+/* Final do Modal */
+
+/* Animação */
+@keyframes showModal {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}

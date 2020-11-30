@@ -1,10 +1,12 @@
+@import "style.css";
+
+/* Header */
 .header {
   position: fixed;
   margin-top: -100px;
   width: 100%;
   height: 10%;
   background: #1d1d1e;
-  margin-bottom: 1em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,26 +17,32 @@
   width: 47px;
   height: 47px;
 }
+/* Final do Header */
 
+/* Início do Container Geral */
 .container {
-  margin: 100px auto 100px auto;
+  margin: 100px auto 70px auto;
   text-align: center;
 }
 
 #welcome {
+  padding-top: 32px;
   font-family: Neue75;
   font-size: 18px;
 }
 
 #nome {
   font-family: CaveatBold;
+  font-size: 48px;
 }
 
 #select {
   font-family: Neue55;
   font-size: 24px;
 }
+/* Final do Container Geral */
 
+/* Container das unidades */
 .container-unidades {
   box-sizing: border-box;
   display: flex;
@@ -46,10 +54,10 @@
 .unidades img {
   max-width: 180px;
 }
+/* Final do container das unidades */
 
 /* Responsividade */
-
-@media only screen and (max-width: 787px) {
+@media only screen and (max-width: 767px) {
   .header img {
     width: 30px;
     height: 30px;
@@ -75,9 +83,13 @@
   #select {
     font-size: 18px;
   }
+
+  .unidades {
+    margin-top: 10px;
+  }
 }
 
-@media only screen and (min-width: 788px) and (max-width: 979px) {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
   .container {
     width: 500px;
   }
@@ -104,7 +116,7 @@
   }
 }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 960px) {
   .container {
     width: 600px;
   }

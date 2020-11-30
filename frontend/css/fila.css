@@ -1,3 +1,5 @@
+@import "style.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +8,7 @@
 a {
   text-decoration: none;
   color: #ffb9a4;
+  transition: ease-in-out 200ms;
 }
 
 .header {
@@ -53,6 +56,51 @@ a {
   font-size: 16px;
 }
 
+#menu-responsivo {
+  display: none;
+}
+
+.bg-menu-responsivo {
+  position: fixed;
+  width: 100%;
+  height: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  transition: 0.5s;
+  overflow-y: hidden;
+  z-index: 1;
+}
+
+#fechar-menu {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  padding: 0 8px;
+  background: transparent;
+  font-family: Neue65;
+  font-size: 40px;
+  color: #ffb9a4;
+  cursor: pointer;
+}
+
+.container-menu-responsivo {
+  width: 100%;
+  text-align: center;
+  font-family: Neue55;
+}
+
+.container-menu-responsivo a {
+  margin-top: 10px;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #ffb9a4;
+  display: block;
+}
+
 .button {
   padding: 10px 20px;
   border: 1px solid #707070;
@@ -67,16 +115,45 @@ a {
   background: #ffb9a4;
   color: #1d1d1e;
 }
-
-#menu-responsivo {
-  display: none;
-}
 /* Final Header */
+
+/* Início Timer*/
+
+
+.timer-fila {
+  max-width: 300px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  animation: showTable 1200ms forwards;
+}
+
+.timer-fila table {
+  font-family: Neue55;
+  margin-top: 24px;
+}
+
+.timer-fila tr {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.timer-fila td {
+  color: #ffb9a4;
+}
+
+.table-time td {
+  font-family: Neue55;
+  margin-top: 122px;
+
+}
+/* Final Timer */
 
 /* Início tabelas */
 .filas {
   width: 960px;
-
   display: flex;
   justify-content: space-around;
   margin: 0 auto 30px auto;
@@ -91,6 +168,10 @@ a {
   font-family: Neue55;
   color: #ffb9a4;
   font-size: 24px;
+}
+
+.tipo-jogo #active {
+  display: none;
 }
 
 .tipo-jogo ul {
@@ -112,6 +193,7 @@ a {
 }
 
 .fila-item {
+  width: 70%;
   padding-bottom: 30px;
 }
 
@@ -139,11 +221,16 @@ a {
 .table-scroll {
   height: 220px;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-bottom: 30px;
 }
 
+.filas {
+  animation: showTable 800ms forwards;
+}
+
 .filas table {
-  width: 300px;
+  width: 100%;
   border-collapse: collapse;
   text-align: left;
   color: #fff;
@@ -159,8 +246,18 @@ a {
   background: #0b0d1b;
 }
 
+.filas th {
+  background-color: #ffb9a4;
+  color: #1d1d1e;
+  padding: 5px 10px;
+}
+
 .filas td {
-  padding: 10px 10px;
+  padding: 10px;
+}
+
+#container-foto {
+  width: 30px;
 }
 
 .foto {
@@ -192,7 +289,7 @@ a {
 }
 
 /* Responsividade */
-@media only screen and (max-width: 787px) {
+@media only screen and (max-width: 767px) {
   .container-menu img {
     width: 30px;
     height: 30px;
@@ -204,14 +301,18 @@ a {
 
   #menu-responsivo {
     display: block;
-    width: 25px;
+    cursor: pointer;
   }
 
   .container-menu {
     width: 300px;
   }
 
-  .tipo-jogo ul {
+  .tipo-jogo #active {
+    display: block;
+  }
+
+  .tipo-jogo ul li {
     margin-left: 10px;
     display: none;
   }
@@ -227,31 +328,35 @@ a {
   }
 
   .fila-item {
-    width: 290px;
+    width: 100%;
     margin-top: 20px;
   }
 }
 
-@media only screen and (min-width: 788px) and (max-width: 979px) {
+@media only screen and (min-width: 768px) and (max-width: 959px) {
   .container-menu {
-    width: 788px;
+    width: 768px;
   }
   .menu {
     width: 80%;
   }
 
   .filas {
-    width: 788px;
+    width: 768px;
   }
 
   .tipo-jogo {
-    width: 788px;
+    width: 768px;
   }
   .tipo-jogo ul {
     margin-left: 10px;
   }
+}
 
-  .fila-item {
-    width: 250px;
+@keyframes showTable {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
   }
 }
