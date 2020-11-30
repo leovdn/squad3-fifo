@@ -3,14 +3,14 @@
   <img src="../frontend/img/TurnApp3x.png" />
 </p>
 
-### Sobre
+### Sobre :book:
 API desenvolvida em Node.Js com as rotas configuradas com as funcionalidades de: 
 - Inserir dados de jogador e jogo para cadastro na fila;
 - Visualização da fila principal, fila por jogos, próximo da fila por jogo.
 - Remoção de item específico
 - Remoção do primeiro item da fila
 
-# Instruções
+# :gear: Instruções
 ## Requisitos
 
 ```
